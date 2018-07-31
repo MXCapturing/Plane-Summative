@@ -20,6 +20,7 @@ public class EnemyScript : MonoBehaviour {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
+        _destination = gameObject.transform.Find("Player");
 	}
 
     void SetDestination()
