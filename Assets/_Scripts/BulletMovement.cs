@@ -8,11 +8,16 @@ public class BulletMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        Invoke("BulletDrop", 2);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.position += transform.forward * speed;
 	}
+
+    void BulletDrop()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public Camera pCam;
     public GameObject bullet;
     private Quaternion qrotation;
+    public float fireRate;
 
 	// Use this for initialization
 	void Start () {
@@ -36,9 +37,14 @@ public class PlayerMovement : MonoBehaviour {
         {
             _rb.AddForce(pCam.transform.up * speed * -1);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && fireRate <= 0)
         {
             Instantiate(bullet, this.transform.position, qrotation);
+            fireRate = 60;
+        }
+        if(fireRate > 0)
+        {
+            fireRate--;
         }
     }
 }
