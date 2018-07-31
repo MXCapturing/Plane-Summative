@@ -19,6 +19,7 @@ public class EnemyScript : MonoBehaviour {
 	void Start () {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
+        InvokeRepeating("Shooting", 2f, 2f);
 	}
 
     void SetDestination()
@@ -34,16 +35,11 @@ public class EnemyScript : MonoBehaviour {
 	void Update () {
 
         SetDestination();
-
-        qrotation = this.transform.rotation;
-
-        timerF = timerF + Time.deltaTime;
-        timerInt = Mathf.RoundToInt(timerF);
-
-        if(timerInt % 2 == 0)
-        {
-            Instantiate(bullet, this.transform.position, qrotation);
-        }
-
 	}
+
+    private void Shooting()
+    {
+        qrotation = this.transform.rotation;
+        Instantiate(bullet, this.transform.position, qrotation);
+    }
 }
