@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject bullet;
     private Quaternion qrotation;
     public float fireRate;
+    public float maxFireRate;
 
 	// Use this for initialization
 	void Start () {
         _rb = this.GetComponent<Rigidbody>();
+        maxFireRate = 60;
 	}
 	
 	// Update is called once per frame
@@ -42,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space) && fireRate <= 0)
         {
             Instantiate(bullet, this.transform.position, qrotation);
-            fireRate = 60;
+            fireRate = maxFireRate;
         }
         if(fireRate > 0)
         {
