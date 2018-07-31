@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour {
         timerF = timerF + Time.deltaTime;
         timerInt = Mathf.RoundToInt(timerF);
 
-        if(timerInt == 2)
+        if(timerInt % 2 == 0)
         {
             Instantiate(bullet, this.transform.position, qrotation);
         }
