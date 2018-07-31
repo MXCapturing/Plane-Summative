@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.W))
         {
-            _rb.AddForce(pCam.transform.up * speed);
+            // _rb.AddForce(pCam.transform.up * speed);
+            transform.position += pCam.transform.up * speed;
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -35,7 +36,8 @@ public class PlayerMovement : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.S))
         {
-            _rb.AddForce(pCam.transform.up * speed * -1);
+            //_rb.AddForce(pCam.transform.up * speed * -1);
+            transform.position -= pCam.transform.up * speed;
         }
         if (Input.GetKey(KeyCode.Space) && fireRate <= 0)
         {
