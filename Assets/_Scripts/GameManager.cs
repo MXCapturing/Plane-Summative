@@ -20,8 +20,15 @@ public class GameManager : MonoBehaviour {
     private int timerInt;
     public Text timer;
 
+    public Text highScore1Input;
+    public Text highScore1Name;
+    public int highScore1;
+
     private bool alive;
     private bool spawn1;
+    private bool spawn2;
+    private bool spawn3;
+    private bool spawn4;
 
     private void Awake()
     {
@@ -37,6 +44,9 @@ public class GameManager : MonoBehaviour {
     {
         alive = true;
         spawn1 = true;
+        spawn2 = false;
+        spawn3 = false;
+        spawn4 = false;
     }
 
     // Use this for initialization
@@ -52,10 +62,27 @@ public class GameManager : MonoBehaviour {
             timerInt = Mathf.RoundToInt(timerF);
             timer.text = "Score: " + timerInt;
 
-            if(timerInt <= 300)
+            #region Wave Timer
+            if (timerF <= 300)
             {
                 spawn1 = true;
             }
+            if(timerF >= 301 && timerF <= 600)
+            {
+                spawn1 = false;
+                spawn2 = true;
+            }
+            if(timerF >= 601 && timerF <= 900)
+            {
+                spawn2 = false;
+                spawn3 = true;
+            }
+            if(timerF >= 901 && timerF <= 1200)
+            {
+                spawn3 = false;
+                spawn4 = true;
+            }
+            #endregion
         }
     }
 
@@ -89,6 +116,81 @@ public class GameManager : MonoBehaviour {
                 }
                 yield return new WaitForSeconds(2f);
             }
+            while (spawn2 == true)
+            {
+                yield return new WaitForSeconds(2f);
+                zone = UnityEngine.Random.Range(1, 4);
+                if (zone == 1)
+                {
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                }
+                if (zone == 2)
+                {
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                }
+                if (zone == 3)
+                {
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                }
+                if (zone == 4)
+                {
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                }
+                yield return new WaitForSeconds(2f);
+            }
+            while (spawn3 == true)
+            {
+                yield return new WaitForSeconds(1f);
+                zone = UnityEngine.Random.Range(1, 4);
+                if (zone == 1)
+                {
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(mediumE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                }
+                if (zone == 2)
+                {
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                }
+                if (zone == 3)
+                {
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(mediumE, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                }
+                if (zone == 4)
+                {
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                }
+                yield return new WaitForSeconds(2f);
+            }
+        }
+    }
+
+    public void GameOver()
+    {
+        alive = false;
+
+        if(timerInt > highScore1)
+        {
+            highScore1 = timerInt;
+            highScore1Name = highScore1Input;
         }
     }
 }

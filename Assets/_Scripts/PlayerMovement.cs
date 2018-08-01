@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody _rb;
+
     public float speed;
+
     public Camera pCam;
     public GameObject bullet;
+
     private Quaternion qrotation;
     public float fireRate;
     public float maxFireRate;
+
+    public int health;
 
 	// Use this for initialization
 	void Start () {
         _rb = this.GetComponent<Rigidbody>();
         maxFireRate = 60;
+        health = 30;
 	}
 	
 	// Update is called once per frame
@@ -49,6 +55,10 @@ public class PlayerMovement : MonoBehaviour {
         if(fireRate > 0)
         {
             fireRate--;
+        }
+        if(health <= 0)
+        {
+            GameManager.instance.GameOver();
         }
     }
 }
