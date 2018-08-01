@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 195419383151190084}
   - component: {fileID: 114036338236869594}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Small Planes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

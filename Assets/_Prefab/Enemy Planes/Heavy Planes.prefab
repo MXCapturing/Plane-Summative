@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 195517201448133070}
   - component: {fileID: 114845074559472394}
   m_Layer: 0
-  m_Name: Blimp
+  m_Name: Heavy Planes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
