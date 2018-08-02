@@ -5,11 +5,21 @@ using UnityEngine.UI;
 
 public class BaseScript : MonoBehaviour {
 
+    public static BaseScript instance = null;
+
     public int health;
     public Image hpBar2;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         health = 50;
         //hpBar = this.GetComponent<Image>();
 	}
@@ -20,7 +30,7 @@ public class BaseScript : MonoBehaviour {
 
         if(health == 0)
         {
-
+            GameManager.instance.GameOver();
         }
 	}
 }
