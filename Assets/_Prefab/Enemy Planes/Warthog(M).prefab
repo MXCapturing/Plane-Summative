@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f56ed3d829808479a22d4ab09183d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1866567128512700, guid: 8bcd7592aefe8ce4e88c7a33e24d87ed, type: 2}
+  bullet: {fileID: 1098426427397204, guid: 495b687b33e318f4d86abdc2ae7984ea, type: 2}
   _destination: {fileID: 0}
 --- !u!195 &195920357656022654
 NavMeshAgent:
