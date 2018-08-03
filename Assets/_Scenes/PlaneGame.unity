@@ -539,6 +539,80 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &586353569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 586353570}
+  - component: {fileID: 586353571}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586353570
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586353569}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -3.5, y: 0, z: -5.8}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 1627708093}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &586353571
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586353569}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e6961fbb55069ee4a8247736beb89cb0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4, y: 4}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &608267797
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,14 +640,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0702f88cb1c31804d952779187051dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightE: {fileID: 1344348566638284, guid: 231476fe4eb775f49ba5a086d1b36abe, type: 2}
-  lightE2: {fileID: 1368831765933186, guid: 08a0a6b9410318f4d980835c70082cbb, type: 2}
-  mediumE: {fileID: 1578465077488652, guid: 7d661a003e061ab409479a4aa0e55262, type: 2}
-  mediumE2: {fileID: 1988918225638628, guid: e9ca4b2282cc7c940994149cc8d29d02, type: 2}
-  heavyE: {fileID: 1557939059440834, guid: 5e533215f9892c541858388791898caf, type: 2}
-  heavyE2: {fileID: 1332444588584026, guid: 2d38f37388e55e64f8ba8c10b99066d7, type: 2}
+  lightE: {fileID: 1215945305706942, guid: 231476fe4eb775f49ba5a086d1b36abe, type: 2}
+  lightE2: {fileID: 1158329013028038, guid: 08a0a6b9410318f4d980835c70082cbb, type: 2}
+  mediumE: {fileID: 1606919838102360, guid: 7d661a003e061ab409479a4aa0e55262, type: 2}
+  mediumE2: {fileID: 1049912224787644, guid: e9ca4b2282cc7c940994149cc8d29d02, type: 2}
+  heavyE: {fileID: 1698125768916654, guid: 5e533215f9892c541858388791898caf, type: 2}
+  heavyE2: {fileID: 1434425755732720, guid: 2d38f37388e55e64f8ba8c10b99066d7, type: 2}
   timerF: 0
+  timerInt: 0
   timer: {fileID: 1421554349}
+  score: 0
   highScore1Input: {fileID: 0}
   highScore1Name: {fileID: 0}
   highScore1: 0
@@ -1263,7 +1339,7 @@ GameObject:
   - component: {fileID: 1627708089}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1309,7 +1385,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1627708088}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1356,6 +1432,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 745985088}
+  - {fileID: 586353570}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

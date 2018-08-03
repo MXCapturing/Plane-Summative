@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23701292751259832}
   - component: {fileID: 136942841591638792}
   - component: {fileID: 114603088277148814}
+  - component: {fileID: 114484733921870326}
   m_Layer: 0
   m_Name: Basic Rocket(Player)
   m_TagString: Untagged
@@ -115,6 +116,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934746484665344}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114484733921870326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934746484665344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02756c4bb64a31f459f2768de0555b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114603088277148814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,9 +147,9 @@ CapsuleCollider:
   m_GameObject: {fileID: 1934746484665344}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212714184726182066

@@ -5,14 +5,12 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class HeavyScript : MonoBehaviour {
-
-
     private Quaternion qrotation;
 
-    public int health;
+    public int hp;
     public Image hpBar;
 
-[SerializeField]
+    [SerializeField]
     private GameObject _destination;
 
     private NavMeshAgent _Navmesh;
@@ -22,7 +20,6 @@ public class HeavyScript : MonoBehaviour {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         _destination = GameObject.Find("BaseCube");
-        health = 50;
     }
 
     void SetDestination()
@@ -37,6 +34,7 @@ public class HeavyScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         SetDestination();
-        hpBar.fillAmount = 0.02f * health;
+        hp = GetComponent<Damageable>().currentHP;
+        hpBar.fillAmount = 0.02f * hp;
     }
 }

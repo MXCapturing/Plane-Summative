@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/_Scenes/Main Menu.unity
+    guid: e086ca9ce45ea24428824c3a76df5d7b
+  - enabled: 1
+    path: Assets/_Scenes/PlaneGame.unity
+    guid: bc1fb5d4bb20f884aba782d1fa316313
   m_configObjects: {}

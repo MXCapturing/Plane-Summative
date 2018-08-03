@@ -17,8 +17,9 @@ public class GameManager : MonoBehaviour {
     private int zone;
 
     public float timerF;
-    private int timerInt;
+    public int timerInt;
     public Text timer;
+    public int score;
 
     public Text highScore1Input;
     public Text highScore1Name;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour {
         spawn2 = false;
         spawn3 = false;
         spawn4 = false;
+        score = 0;
     }
 
     // Use this for initialization
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour {
 		if(alive == true)
         {
             timerF = timerF + Time.deltaTime * 10;
-            timerInt = Mathf.RoundToInt(timerF);
+            timerInt = Mathf.RoundToInt(timerF) + score;
             timer.text = "Score: " + timerInt;
 
             #region Wave Timer

@@ -4,46 +4,44 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class MediumsScript : MonoBehaviour {
-
+public class EnemyScript : MonoBehaviour {
 
     private float timerF;
     private int timerInt;
     public GameObject bullet;
     private Quaternion qrotation;
 
-    public int health;
+    public int hp;
     public Image hpBar;
 
-[SerializeField]
+    [SerializeField]
     private GameObject _destination;
 
     private NavMeshAgent _Navmesh;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start () {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
         _destination = GameObject.Find("Player");
-        health = 30;
-    }
+	}
 
     void SetDestination()
     {
-        if (_destination != null)
+        if(_destination != null)
         {
             Vector3 targetVector = _destination.transform.position;
             _Navmesh.SetDestination(targetVector);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	void Update ()
     {
         SetDestination();
-        hpBar.fillAmount = 0.034f * health;
+        hp = GetComponent<Damageable>().currentHP;
+        hpBar.fillAmount = 0.067f * hp;
     }
 
     private void Shooting()

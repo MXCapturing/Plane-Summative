@@ -11,7 +11,7 @@ public class MenuButtons : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("PlaneGame");
     }
 
     public void Controls()

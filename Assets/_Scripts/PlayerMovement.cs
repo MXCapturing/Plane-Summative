@@ -52,32 +52,32 @@ public class PlayerMovement : MonoBehaviour {
             transform.position -= pCam.transform.up * speed;
         }
         #region Damage
-        if (Input.GetKey(KeyCode.Space) && fireRate <= 0 && damage == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && damage == 1)
         {
             Instantiate(bullet, this.transform.position, qrotation);
             fireRate = maxFireRate;
         }
-        if (Input.GetKey(KeyCode.Space) && fireRate <= 0 && damage == 2)
+        if (Input.GetKey(KeyCode.Space) && damage == 2)
         {
             Instantiate(bullet2, this.transform.position, qrotation);
             fireRate = maxFireRate;
         }
-        if (Input.GetKey(KeyCode.Space) && fireRate <= 0 && damage == 3)
+        if (Input.GetKey(KeyCode.Space) && damage == 3)
         {
             Instantiate(rocket, this.transform.position, qrotation);
             fireRate = maxFireRate;
         }
-        if (Input.GetKey(KeyCode.Space) && fireRate <= 0 && damage == 4)
+        if (Input.GetKey(KeyCode.Space) && damage == 4)
         {
             Instantiate(rocket2, this.transform.position, qrotation);
             fireRate = maxFireRate;
         }
-        if (Input.GetKey(KeyCode.Space) && fireRate <= 0 && damage == 5)
+        if (Input.GetKey(KeyCode.Space) && damage == 5)
         {
             Instantiate(laser, this.transform.position, qrotation);
             fireRate = maxFireRate;
         }
-        if (Input.GetKey(KeyCode.Space) && fireRate <= 0 && damage == 6)
+        if (Input.GetKey(KeyCode.Space) && damage == 6)
         {
             Instantiate(laser2, this.transform.position, qrotation);
             fireRate = maxFireRate;

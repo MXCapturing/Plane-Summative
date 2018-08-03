@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23777112687202610}
   - component: {fileID: 136552326738041348}
   - component: {fileID: 114754710623330444}
+  - component: {fileID: 114669567421552622}
   m_Layer: 0
   m_Name: Rapid Bullet(Player)
   m_TagString: Untagged
@@ -115,6 +116,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986144978761268}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114669567421552622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986144978761268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea656e560a3f5b41a9d1ecbefb7b50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114754710623330444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,9 +147,9 @@ CapsuleCollider:
   m_GameObject: {fileID: 1986144978761268}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212480120482945198
