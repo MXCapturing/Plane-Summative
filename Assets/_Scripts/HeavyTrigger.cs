@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class HeavyTrigger : MonoBehaviour {
 
-    public GameObject Blimp;
+    public GameObject heavy;
 
     private void OnCollisionEnter(Collision col)
     {
         if(col.gameObject.tag == "BaseCube")
         {
             BaseScript.instance.health -= 10;
-            Destroy(Blimp);
+            Destroy(heavy);
         }
     }
 }

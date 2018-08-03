@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    private Rigidbody _rb;
+    //private Rigidbody _rb;
 
     public float speed;
 
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _rb = this.GetComponent<Rigidbody>();
+        //_rb = this.GetComponent<Rigidbody>();
         maxFireRate = 60;
         health = 30;
         damage = 1;

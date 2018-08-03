@@ -566,9 +566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0702f88cb1c31804d952779187051dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightE: {fileID: 1101007361734874, guid: 231476fe4eb775f49ba5a086d1b36abe, type: 2}
-  mediumE: {fileID: 1206847316808898, guid: 7d661a003e061ab409479a4aa0e55262, type: 2}
-  heavyE: {fileID: 1312977050998464, guid: 5e533215f9892c541858388791898caf, type: 2}
+  lightE: {fileID: 1344348566638284, guid: 231476fe4eb775f49ba5a086d1b36abe, type: 2}
+  lightE2: {fileID: 1368831765933186, guid: 08a0a6b9410318f4d980835c70082cbb, type: 2}
+  mediumE: {fileID: 1578465077488652, guid: 7d661a003e061ab409479a4aa0e55262, type: 2}
+  mediumE2: {fileID: 1988918225638628, guid: e9ca4b2282cc7c940994149cc8d29d02, type: 2}
+  heavyE: {fileID: 1557939059440834, guid: 5e533215f9892c541858388791898caf, type: 2}
+  heavyE2: {fileID: 1332444588584026, guid: 2d38f37388e55e64f8ba8c10b99066d7, type: 2}
   timerF: 0
   timer: {fileID: 1421554349}
   highScore1Input: {fileID: 0}

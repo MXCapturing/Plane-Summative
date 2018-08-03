@@ -8,6 +8,7 @@ public class BaseScript : MonoBehaviour {
     public static BaseScript instance = null;
 
     public int health;
+    //public Image hpBar1;
     public Image hpBar2;
 
     private void Awake()
@@ -20,15 +21,16 @@ public class BaseScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        health = 50;
+        health = 100;
         //hpBar = this.GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        hpBar2.fillAmount = 0.02f * health;
+        hpBar2.fillAmount = 0.01f * health;
+       //hpBar1.fillAmount = 0.02f * health;
 
-        if(health == 0)
+        if (health == 0)
         {
             GameManager.instance.GameOver();
         }

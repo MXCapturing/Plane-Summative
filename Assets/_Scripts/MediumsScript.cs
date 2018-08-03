@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class MediumsScript : MonoBehaviour {
+
 
     private float timerF;
     private int timerInt;
     public GameObject bullet;
     private Quaternion qrotation;
 
-    [SerializeField]
+    public int health;
+    public Image hpBar;
+
+[SerializeField]
     private GameObject _destination;
 
     private NavMeshAgent _Navmesh;
@@ -22,6 +27,7 @@ public class MediumsScript : MonoBehaviour {
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
         _destination = GameObject.Find("Player");
+        health = 30;
     }
 
     void SetDestination()
@@ -37,6 +43,7 @@ public class MediumsScript : MonoBehaviour {
     void Update()
     {
         SetDestination();
+        hpBar.fillAmount = 0.034f * health;
     }
 
     private void Shooting()

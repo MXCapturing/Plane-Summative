@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour {
 
@@ -10,17 +11,21 @@ public class EnemyScript : MonoBehaviour {
     public GameObject bullet;
     private Quaternion qrotation;
 
-    [SerializeField]
+    public int health;
+    public Image hpBar;
+
+[SerializeField]
     private GameObject _destination;
 
     private NavMeshAgent _Navmesh;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
         _destination = GameObject.Find("Player");
+        health = 15;
 	}
 
     void SetDestination()
@@ -36,7 +41,8 @@ public class EnemyScript : MonoBehaviour {
 	void Update ()
     {
         SetDestination();
-	}
+        hpBar.fillAmount = 0.067f * health;
+    }
 
     private void Shooting()
     {
