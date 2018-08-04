@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public static PlayerMovement instance = null;
+
     //private Rigidbody _rb;
 
     public float speed;
@@ -20,6 +22,14 @@ public class PlayerMovement : MonoBehaviour {
     public int health;
     public int damage;
 
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
 	// Use this for initialization
 	void Start () {
         //_rb = this.GetComponent<Rigidbody>();
@@ -31,58 +41,62 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        qrotation = this.transform.rotation;
+        if(GameManager.instance.paused == false)
+        {
+            qrotation = this.transform.rotation;
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            // _rb.AddForce(pCam.transform.up * speed);
-            transform.position += pCam.transform.up * speed;
+            if (Input.GetKey(KeyCode.W))
+            {
+                // _rb.AddForce(pCam.transform.up * speed);
+                transform.position += pCam.transform.up * speed;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                this.transform.eulerAngles += new Vector3(0, -2f, 0);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                this.transform.eulerAngles += new Vector3(0, 2f, 0);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                //_rb.AddForce(pCam.transform.up * speed * -1);
+                transform.position -= pCam.transform.up * speed;
+            }
+            #region Damage
+            if (Input.GetKeyDown(KeyCode.Space) && damage == 1)
+            {
+                Instantiate(bullet, this.transform.position, qrotation);
+                fireRate = maxFireRate;
+            }
+            if (Input.GetKey(KeyCode.Space) && damage == 2)
+            {
+                Instantiate(bullet2, this.transform.position, qrotation);
+                fireRate = maxFireRate;
+            }
+            if (Input.GetKey(KeyCode.Space) && damage == 3)
+            {
+                Instantiate(rocket, this.transform.position, qrotation);
+                fireRate = maxFireRate;
+            }
+            if (Input.GetKey(KeyCode.Space) && damage == 4)
+            {
+                Instantiate(rocket2, this.transform.position, qrotation);
+                fireRate = maxFireRate;
+            }
+            if (Input.GetKey(KeyCode.Space) && damage == 5)
+            {
+                Instantiate(laser, this.transform.position, qrotation);
+                fireRate = maxFireRate;
+            }
+            if (Input.GetKey(KeyCode.Space) && damage == 6)
+            {
+                Instantiate(laser2, this.transform.position, qrotation);
+                fireRate = maxFireRate;
+            }
+            #endregion
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.transform.eulerAngles += new Vector3(0, -2f, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.eulerAngles += new Vector3(0, 2f, 0);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            //_rb.AddForce(pCam.transform.up * speed * -1);
-            transform.position -= pCam.transform.up * speed;
-        }
-        #region Damage
-        if (Input.GetKeyDown(KeyCode.Space) && damage == 1)
-        {
-            Instantiate(bullet, this.transform.position, qrotation);
-            fireRate = maxFireRate;
-        }
-        if (Input.GetKey(KeyCode.Space) && damage == 2)
-        {
-            Instantiate(bullet2, this.transform.position, qrotation);
-            fireRate = maxFireRate;
-        }
-        if (Input.GetKey(KeyCode.Space) && damage == 3)
-        {
-            Instantiate(rocket, this.transform.position, qrotation);
-            fireRate = maxFireRate;
-        }
-        if (Input.GetKey(KeyCode.Space) && damage == 4)
-        {
-            Instantiate(rocket2, this.transform.position, qrotation);
-            fireRate = maxFireRate;
-        }
-        if (Input.GetKey(KeyCode.Space) && damage == 5)
-        {
-            Instantiate(laser, this.transform.position, qrotation);
-            fireRate = maxFireRate;
-        }
-        if (Input.GetKey(KeyCode.Space) && damage == 6)
-        {
-            Instantiate(laser2, this.transform.position, qrotation);
-            fireRate = maxFireRate;
-        }
-        #endregion
+
         if (fireRate > 0)
         {
             fireRate--;

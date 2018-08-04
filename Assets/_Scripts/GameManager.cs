@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
 
+    public bool paused;
+    public Canvas pauseMenu;
+
     public GameObject lightE; public GameObject lightE2; 
     public GameObject mediumE; public GameObject mediumE2;
     public GameObject heavyE; public GameObject heavyE2;
@@ -49,6 +52,8 @@ public class GameManager : MonoBehaviour {
         spawn3 = false;
         spawn4 = false;
         score = 0;
+
+        paused = false;
     }
 
     // Use this for initialization
@@ -64,6 +69,19 @@ public class GameManager : MonoBehaviour {
             timerInt = Mathf.RoundToInt(timerF) + score;
             timer.text = "Score: " + timerInt;
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                paused = !paused;
+            }
+
+            if(paused == true)
+            {
+                pauseMenu.enabled = true;
+            }
+            if(paused == false)
+            {
+                pauseMenu.enabled = false;
+            }
             #region Wave Timer
             if (timerF <= 300)
             {
