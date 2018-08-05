@@ -77,10 +77,12 @@ public class GameManager : MonoBehaviour {
             if(paused == true)
             {
                 pauseMenu.enabled = true;
+                time.timeScale = 0;
             }
             if(paused == false)
             {
                 pauseMenu.enabled = false;
+                time.timeScale = 1;
             }
             #region Wave Timer
             if (timerF <= 300)

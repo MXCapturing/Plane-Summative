@@ -42,6 +42,15 @@ public class EnemyScript : MonoBehaviour {
         SetDestination();
         hp = GetComponent<Damageable>().currentHP;
         hpBar.fillAmount = 0.067f * hp;
+
+        if(GameManager.instance.paused == true)
+        {
+            _Navmesh.isStopped = true;
+        }
+        if(GameManager.instance.paused == false)
+        {
+            _Navmesh.isStopped = false;
+        }
     }
 
     private void Shooting()
