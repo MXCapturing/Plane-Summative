@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -16,11 +17,14 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject laser; public GameObject laser2;
 
     private Quaternion qrotation;
-    public float fireRate;
-    public float maxFireRate;
 
     public int health;
     public int damage;
+
+    public Slider bulletHeat;
+    public Image heatBar;
+    private bool canShoot;
+    private int fireRate;
 
     void Awake()
     {
@@ -32,8 +36,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //_rb = this.GetComponent<Rigidbody>();
-        maxFireRate = 60;
         health = 30;
         damage = 1;
 	}
@@ -45,62 +47,80 @@ public class PlayerMovement : MonoBehaviour {
         {
             qrotation = this.transform.rotation;
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                // _rb.AddForce(pCam.transform.up * speed);
                 transform.position += pCam.transform.up * speed;
-            }
             if (Input.GetKey(KeyCode.A))
             {
-                this.transform.eulerAngles += new Vector3(0, -2f, 0);
+                this.transform.eulerAngles += new Vector3(0, -3f, 0);
             }
             if (Input.GetKey(KeyCode.D))
             {
-                this.transform.eulerAngles += new Vector3(0, 2f, 0);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                //_rb.AddForce(pCam.transform.up * speed * -1);
-                transform.position -= pCam.transform.up * speed;
+                this.transform.eulerAngles += new Vector3(0, 3f, 0);
             }
             #region Damage
-            if (Input.GetKeyDown(KeyCode.Space) && damage == 1)
+            if(canShoot == true && fireRate <= 0)
             {
-                Instantiate(bullet, this.transform.position, qrotation);
-                fireRate = maxFireRate;
+                if (Input.GetKey(KeyCode.Space) && damage == 1)
+                {
+                    Instantiate(bullet, this.transform.position, qrotation);
+                    bulletHeat.value += 0.02f;
+                    fireRate = 10;
+                }
+                if (Input.GetKey(KeyCode.Space) && damage == 2)
+                {
+                    Instantiate(bullet2, this.transform.position, qrotation);
+                    bulletHeat.value += 0.01f;
+                    fireRate = 5;
+                }
+                if (Input.GetKey(KeyCode.Space) && damage == 3)
+                {
+                    Instantiate(rocket, this.transform.position, qrotation);
+                    bulletHeat.value += 0.01f;
+                    fireRate = 5;
+                }
+                if (Input.GetKey(KeyCode.Space) && damage == 4)
+                {
+                    Instantiate(rocket2, this.transform.position, qrotation);
+                    bulletHeat.value += 0.01f;
+                    fireRate = 5;
+                }
+                if (Input.GetKey(KeyCode.Space) && damage == 5)
+                {
+                    Instantiate(laser, this.transform.position, qrotation);
+                    bulletHeat.value += 0.01f;
+                    fireRate = 5;
+                }
+                if (Input.GetKey(KeyCode.Space) && damage == 6)
+                {
+                    Instantiate(laser2, this.transform.position, qrotation);
+                    bulletHeat.value += 0.01f;
+                    fireRate = 5;
+                }
+                if (!Input.GetKey(KeyCode.Space))
+                {
+                    bulletHeat.value -= 0.005f;
+                }
             }
-            if (Input.GetKey(KeyCode.Space) && damage == 2)
+            if (bulletHeat.value == 1)
             {
-                Instantiate(bullet2, this.transform.position, qrotation);
-                fireRate = maxFireRate;
+                canShoot = false;
+                heatBar.color = Color.red;
             }
-            if (Input.GetKey(KeyCode.Space) && damage == 3)
+            if(canShoot == false)
             {
-                Instantiate(rocket, this.transform.position, qrotation);
-                fireRate = maxFireRate;
+                bulletHeat.value -= 0.004f;
             }
-            if (Input.GetKey(KeyCode.Space) && damage == 4)
+            if (bulletHeat.value == 0 && canShoot == false)
             {
-                Instantiate(rocket2, this.transform.position, qrotation);
-                fireRate = maxFireRate;
+                canShoot = true;
+                heatBar.color = Color.white;
             }
-            if (Input.GetKey(KeyCode.Space) && damage == 5)
+            if(fireRate > 0)
             {
-                Instantiate(laser, this.transform.position, qrotation);
-                fireRate = maxFireRate;
-            }
-            if (Input.GetKey(KeyCode.Space) && damage == 6)
-            {
-                Instantiate(laser2, this.transform.position, qrotation);
-                fireRate = maxFireRate;
+                fireRate--;
             }
             #endregion
         }
 
-        if (fireRate > 0)
-        {
-            fireRate--;
-        }
         if(health <= 0)
         {
             GameManager.instance.GameOver();

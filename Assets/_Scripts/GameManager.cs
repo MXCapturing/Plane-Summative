@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
 
     public bool paused;
-    public Canvas pauseMenu;
+    public GameObject pauseMenu;
 
     public GameObject lightE; public GameObject lightE2; 
     public GameObject mediumE; public GameObject mediumE2;
@@ -76,13 +76,13 @@ public class GameManager : MonoBehaviour {
 
             if(paused == true)
             {
-                pauseMenu.enabled = true;
-                time.timeScale = 0;
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0;
             }
             if(paused == false)
             {
-                pauseMenu.enabled = false;
-                time.timeScale = 1;
+                pauseMenu.SetActive(false);
+                Time.timeScale = 1;
             }
             #region Wave Timer
             if (timerF <= 300)

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136734395199989624}
   - component: {fileID: 114837499167956908}
   - component: {fileID: 114501787353517700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Basic Laser(Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4017273589943762}
   - component: {fileID: 212143436643119202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lasers
   m_TagString: Untagged
   m_Icon: {fileID: 0}

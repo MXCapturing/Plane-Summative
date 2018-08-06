@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136626007027937554}
   - component: {fileID: 114397575379503262}
   - component: {fileID: 114154922755876146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rapid Laser(Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4050191848194168}
   - component: {fileID: 212722532123540204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: basic_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

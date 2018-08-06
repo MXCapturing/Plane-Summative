@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4895247894088892}
   - component: {fileID: 212480120482945198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: basic_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 136552326738041348}
   - component: {fileID: 114754710623330444}
   - component: {fileID: 114669567421552622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rapid Bullet(Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

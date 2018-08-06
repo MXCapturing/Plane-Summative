@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136540188925038422}
   - component: {fileID: 114134368003783236}
   - component: {fileID: 114809481216802796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Basic Rocket(Enemy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4471633520975722}
   - component: {fileID: 212645308454233714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rockets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
