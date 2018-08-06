@@ -8,13 +8,8 @@ public class BasicRocketEnemy : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            GameObject objectCollided = other.gameObject;
-            Damageable damageableComponent = objectCollided.GetComponent<Damageable>();
-
-            if (damageableComponent)
-            {
-                damageableComponent.doDamage(15);
-            }
+            PlayerMovement.instance.health -= 15;
+            Destroy(gameObject);
         }
     }
 }

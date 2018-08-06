@@ -8,13 +8,8 @@ public class BasicBulletEnemy : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            GameObject objectCollided = other.gameObject;
-            Damageable damageableComponent = objectCollided.GetComponent<Damageable>();
-
-            if (damageableComponent)
-            {
-                damageableComponent.doDamage(5);
-            }
+            PlayerMovement.instance.health -= 5;
+            Destroy(gameObject);
         }
     }
 }

@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     private Quaternion qrotation;
 
     public int health;
+    public Image hpBar;
     public int damage;
 
     public Slider bulletHeat;
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        hpBar.fillAmount = 0.034f * health;
 
         if(GameManager.instance.paused == false)
         {
@@ -97,7 +100,7 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 if (!Input.GetKey(KeyCode.Space))
                 {
-                    bulletHeat.value -= 0.005f;
+                    bulletHeat.value -= 0.003f;
                 }
             }
             if (bulletHeat.value == 1)
@@ -107,7 +110,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             if(canShoot == false)
             {
-                bulletHeat.value -= 0.004f;
+                bulletHeat.value -= 0.002f;
             }
             if (bulletHeat.value == 0 && canShoot == false)
             {
