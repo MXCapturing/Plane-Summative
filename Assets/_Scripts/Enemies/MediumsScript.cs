@@ -45,7 +45,7 @@ public class MediumsScript : MonoBehaviour {
         hp = GetComponent<Damageable>().currentHP;
         hpBar.fillAmount = 0.034f * hp;
 
-        if (GameManager.instance.paused == true)
+        if (GameManager.instance.paused == true || GameManager.instance.alive == false)
         {
             _Navmesh.isStopped = true;
         }

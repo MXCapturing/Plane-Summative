@@ -24,11 +24,9 @@ public class GameManager : MonoBehaviour {
     public Text timer;
     public int score;
 
-    public Text highScore1Input;
-    public Text highScore1Name;
-    public int highScore1;
+    public bool alive;
+    public GameObject gameOver;
 
-    private bool alive;
     private bool spawn1;
     private bool spawn2;
     private bool spawn3;
@@ -240,11 +238,10 @@ public class GameManager : MonoBehaviour {
     public void GameOver()
     {
         alive = false;
+        HighScore.instance.points = timerInt;
+        gameOver.SetActive(true);
 
-        if(timerInt > highScore1)
-        {
-            highScore1 = timerInt;
-            highScore1Name = highScore1Input;
-        }
+        HighScore.instance.NewScore();
+
     }
 }

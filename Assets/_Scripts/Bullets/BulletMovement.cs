@@ -13,7 +13,7 @@ public class BulletMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(GameManager.instance.paused == false)
+        if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             transform.position += transform.forward * speed;
         }

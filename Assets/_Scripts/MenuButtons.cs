@@ -24,6 +24,11 @@ public class MenuButtons : MonoBehaviour {
         SceneManager.LoadScene("");
     }
 
+    public void HighScores()
+    {
+        SceneManager.LoadScene("HighScores");
+    }
+
     public void QuitConfirm()
     {
         quit.SetActive(true);
