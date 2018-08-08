@@ -75,11 +75,17 @@ public class GameManager : MonoBehaviour {
             if(paused == true)
             {
                 pauseMenu.SetActive(true);
-                Time.timeScale = 0;
             }
             if(paused == false)
             {
                 pauseMenu.SetActive(false);
+            }
+            if(paused == true || alive == false)
+            {
+                Time.timeScale = 0;
+            }
+            if(paused == false && alive == true)
+            {
                 Time.timeScale = 1;
             }
             #region Wave Timer
@@ -238,10 +244,10 @@ public class GameManager : MonoBehaviour {
     public void GameOver()
     {
         alive = false;
-        HighScore.instance.points = timerInt;
         gameOver.SetActive(true);
-
-        HighScore.instance.NewScore();
-
+        if(timerInt > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", timerInt);
+        }
     }
 }

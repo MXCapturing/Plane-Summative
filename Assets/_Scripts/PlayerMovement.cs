@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour {
 
         hpBar.fillAmount = 0.034f * health;
 
-        if(GameManager.instance.paused == false || GameManager.instance.alive == false)
+        if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             qrotation = this.transform.rotation;
 

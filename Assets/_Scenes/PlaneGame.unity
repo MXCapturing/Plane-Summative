@@ -1082,7 +1082,7 @@ MonoBehaviour:
   timer: {fileID: 1421554349}
   score: 0
   alive: 0
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 978383583}
 --- !u!4 &608267799
 Transform:
   m_ObjectHideFlags: 0
@@ -1704,7 +1704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &978383584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,7 +1959,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 608267800}
-        m_MethodName: HighScores
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

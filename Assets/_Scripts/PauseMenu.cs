@@ -19,16 +19,4 @@ public class PauseMenu : MonoBehaviour {
     {
         SceneManager.LoadScene("Main Menu");
     }
-
-    public void HighScores()
-    {
-        StartCoroutine(HScore());
-    }
-
-    IEnumerator HScore()
-    {
-        SceneManager.LoadScene("HighScores");
-        yield return new WaitForSeconds(2f);
-        HighScore.instance.NewScore();
-    }
 }

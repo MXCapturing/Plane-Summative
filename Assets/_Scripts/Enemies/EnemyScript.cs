@@ -47,7 +47,7 @@ public class EnemyScript : MonoBehaviour {
         {
             _Navmesh.isStopped = true;
         }
-        if(GameManager.instance.paused == false)
+        if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             _Navmesh.isStopped = false;
         }
