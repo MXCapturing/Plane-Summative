@@ -34,6 +34,12 @@ public class MenuButtons : MonoBehaviour {
         SceneManager.LoadScene("PlaneGame");
     }
 
+    public void Back()
+    {
+        characterSelect.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
     public void Controls()
     {
         SceneManager.LoadScene("");

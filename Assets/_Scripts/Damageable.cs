@@ -7,6 +7,7 @@ public class Damageable : MonoBehaviour {
 
     public int maxHP;
     public int currentHP;
+    public GameObject explosion;
     //public Image hpBar;
 
     // Use this for initialization
@@ -22,6 +23,7 @@ public class Damageable : MonoBehaviour {
         if (currentHP <= 0)
         {
             GameManager.instance.score += 50;
+            Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

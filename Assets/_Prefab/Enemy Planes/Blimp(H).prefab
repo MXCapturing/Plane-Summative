@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 50
   currentHP: 0
+  explosion: {fileID: 1741282012085732, guid: c68180ce11ec53b408dfc8fc0098a1b9, type: 2}
 --- !u!114 &114547160808896382
 MonoBehaviour:
   m_ObjectHideFlags: 1

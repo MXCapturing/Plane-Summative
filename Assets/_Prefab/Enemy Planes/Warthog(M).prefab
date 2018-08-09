@@ -242,7 +242,8 @@ MonoBehaviour:
   bullet: {fileID: 1098426427397204, guid: 495b687b33e318f4d86abdc2ae7984ea, type: 2}
   hp: 0
   hpBar: {fileID: 114256057892341012}
-  _destination: {fileID: 0}
+  _destination: {fileID: 1547280473282190, guid: 19d0be1f7941c054b93185f020ee3ea1,
+    type: 2}
 --- !u!114 &114256057892341012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 30
   currentHP: 0
+  explosion: {fileID: 1741282012085732, guid: c68180ce11ec53b408dfc8fc0098a1b9, type: 2}
 --- !u!114 &114681127001603912
 MonoBehaviour:
   m_ObjectHideFlags: 1

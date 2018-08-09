@@ -347,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 15
   currentHP: 0
+  explosion: {fileID: 1741282012085732, guid: c68180ce11ec53b408dfc8fc0098a1b9, type: 2}
 --- !u!195 &195296273326342702
 NavMeshAgent:
   m_ObjectHideFlags: 1
