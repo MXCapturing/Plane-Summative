@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
 
+    private int pl1 = 1;
+    public GameObject player1;
+    private int pl2 = 2;
+    public GameObject player2;
+    private int pl3 = 3;
+    public GameObject player3;
+
     public bool paused;
     public GameObject pauseMenu;
 
@@ -56,6 +63,18 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        if(pl1 == PlayerPrefs.GetInt("Player"))
+        {
+            Instantiate(player1, new Vector3(0, 100, 0), Quaternion.identity);
+        }
+        if(pl2 == PlayerPrefs.GetInt("Player"))
+        {
+            Instantiate(player2, new Vector3(0, 100, 0), Quaternion.identity);
+        }
+        if (pl3 == PlayerPrefs.GetInt("Player"))
+        {
+            Instantiate(player3, new Vector3(0, 100, 0), Quaternion.identity);
+        }
         StartCoroutine(Wave1());
 	}
 	
