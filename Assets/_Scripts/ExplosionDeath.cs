@@ -6,6 +6,6 @@ public class ExplosionDeath : MonoBehaviour {
 
 	public void DestroyThing()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

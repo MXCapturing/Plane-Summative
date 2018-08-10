@@ -26,7 +26,18 @@ public class MediumsScript : MonoBehaviour {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
-        _destination = GameObject.Find("Player");
+        if(PlayerPrefs.GetInt("Player") == 1)
+        {
+            _destination = GameObject.Find("Player(Clone)");
+        }
+        if (PlayerPrefs.GetInt("Player") == 2)
+        {
+            _destination = GameObject.Find("Player2(Clone)");
+        }
+        if (PlayerPrefs.GetInt("Player") == 3)
+        {
+            _destination = GameObject.Find("Player3(Clone)");
+        }
     }
 
     void SetDestination()

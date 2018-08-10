@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour {
     public bool paused;
     public GameObject pauseMenu;
 
+    public Image playerHP;
+    public Image heatBar;
+    public Slider heatGauge;
+
     public GameObject lightE; public GameObject lightE2; 
     public GameObject mediumE; public GameObject mediumE2;
     public GameObject heavyE; public GameObject heavyE2;
@@ -80,11 +84,14 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if(alive == true)
         {
             timerF = timerF + Time.deltaTime * 10;
             timerInt = Mathf.RoundToInt(timerF) + score;
             timer.text = "Score: " + timerInt;
+
+            playerHP.fillAmount = 0.034f * PlayerMovement.instance.health;
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -106,6 +113,21 @@ public class GameManager : MonoBehaviour {
             if(paused == false && alive == true)
             {
                 Time.timeScale = 1;
+            }
+
+            if (heatGauge.value == 1)
+            {
+                PlayerMovement.instance.canShoot = false;
+                heatBar.color = Color.red;
+            }
+            if (heatGauge.value == 0 && PlayerMovement.instance.canShoot == false)
+            {
+                PlayerMovement.instance.canShoot = true;
+                heatBar.color = Color.white;
+            }
+            if (PlayerMovement.instance.canShoot == false)
+            {
+                heatGauge.value -= 0.002f;
             }
             #region Wave Timer
             if (timerF <= 300)

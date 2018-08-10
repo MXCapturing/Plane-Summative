@@ -18,13 +18,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private Quaternion qrotation;
 
-    public int health;
-    public Image hpBar;
+    public float health;
     public int damage;
 
-    public Slider bulletHeat;
-    public Image heatBar;
-    private bool canShoot;
+    public bool canShoot;
     private int fireRate;
 
     void Awake()
@@ -44,13 +41,34 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        hpBar.fillAmount = 0.034f * health;
+        if(health > 30)
+        {
+            health = 30;
+        }
 
         if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             qrotation = this.transform.rotation;
 
-                transform.position += pCam.transform.up * speed;
+            health -= 0.01f;
+
+            transform.position += pCam.transform.up * speed;
+            if(transform.position.z > 800)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -800);
+            }
+            if (transform.position.z < -800)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 800);
+            }
+            if (transform.position.x > 800)
+            {
+                transform.position = new Vector3(-800, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x < -800)
+            {
+                transform.position = new Vector3(800, transform.position.y, transform.position.z);
+            }
             if (Input.GetKey(KeyCode.A))
             {
                 this.transform.eulerAngles += new Vector3(0, -3f, 0);
@@ -65,57 +83,52 @@ public class PlayerMovement : MonoBehaviour {
                 if (Input.GetKey(KeyCode.Space) && damage == 1)
                 {
                     Instantiate(bullet, this.transform.position, qrotation);
-                    bulletHeat.value += 0.02f;
+                    GameManager.instance.heatGauge.value += 0.02f;
                     fireRate = 10;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 2)
                 {
                     Instantiate(bullet2, this.transform.position, qrotation);
-                    bulletHeat.value += 0.01f;
+                    GameManager.instance.heatGauge.value += 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 3)
                 {
                     Instantiate(rocket, this.transform.position, qrotation);
-                    bulletHeat.value += 0.01f;
+                    GameManager.instance.heatGauge.value += 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 4)
                 {
                     Instantiate(rocket2, this.transform.position, qrotation);
-                    bulletHeat.value += 0.01f;
+                    GameManager.instance.heatGauge.value += 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 5)
                 {
                     Instantiate(laser, this.transform.position, qrotation);
-                    bulletHeat.value += 0.01f;
+                    GameManager.instance.heatGauge.value += 0.01f;
                     fireRate = 5;
                 }
-                if (Input.GetKey(KeyCode.Space) && damage == 6)
+                if (Input.GetKey(KeyCode.Space) && damage >= 6)
                 {
                     Instantiate(laser2, this.transform.position, qrotation);
-                    bulletHeat.value += 0.01f;
+                    GameManager.instance.heatGauge.value += 0.01f;
                     fireRate = 5;
                 }
-                if (!Input.GetKey(KeyCode.Space))
+                if (!Input.GetKey(KeyCode.Space) && !Input.GetKeyDown(KeyCode.LeftControl))
                 {
-                    bulletHeat.value -= 0.003f;
+                    GameManager.instance.heatGauge.value -= 0.003f;
                 }
             }
-            if (bulletHeat.value == 1)
+            if(canShoot == true && Input.GetKey(KeyCode.LeftControl))
             {
-                canShoot = false;
-                heatBar.color = Color.red;
+                speed = 5;
+                GameManager.instance.heatGauge.value += 0.01f;
             }
-            if(canShoot == false)
+            if(canShoot == false || Input.GetKeyUp(KeyCode.LeftControl))
             {
-                bulletHeat.value -= 0.002f;
-            }
-            if (bulletHeat.value == 0 && canShoot == false)
-            {
-                canShoot = true;
-                heatBar.color = Color.white;
+                speed = 2;
             }
             if(fireRate > 0)
             {
