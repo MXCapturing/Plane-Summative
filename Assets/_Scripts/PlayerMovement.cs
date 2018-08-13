@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject bullet; public GameObject bullet2;
     public GameObject rocket; public GameObject rocket2;
     public GameObject laser; public GameObject laser2;
+    public GameObject booster1; public GameObject booster2;
 
     private Quaternion qrotation;
 
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
         health = 30;
         damage = 1;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     Instantiate(bullet, this.transform.position, qrotation);
                     GameManager.instance.heatGauge.value += 0.02f;
-                    fireRate = 10;
+                    fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 2)
                 {
@@ -124,11 +125,15 @@ public class PlayerMovement : MonoBehaviour {
             if(canShoot == true && Input.GetKey(KeyCode.LeftControl))
             {
                 speed = 5;
+                booster1.SetActive(true);
+                booster2.SetActive(true);
                 GameManager.instance.heatGauge.value += 0.01f;
             }
             if(canShoot == false || Input.GetKeyUp(KeyCode.LeftControl))
             {
                 speed = 2;
+                booster1.SetActive(false);
+                booster2.SetActive(false);
             }
             if(fireRate > 0)
             {

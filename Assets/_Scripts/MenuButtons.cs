@@ -42,17 +42,12 @@ public class MenuButtons : MonoBehaviour {
 
     public void Controls()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Controls");
     }
 
     public void About()
     {
-        SceneManager.LoadScene("");
-    }
-
-    public void HighScores()
-    {
-        SceneManager.LoadScene("HighScores");
+        SceneManager.LoadScene("About");
     }
 
     public void QuitConfirm()
