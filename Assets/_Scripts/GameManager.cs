@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseMenu;
 
     public Image playerHP;
-    public Image heatBar;
-    public Slider heatGauge;
 
     public GameObject lightE; public GameObject lightE2; 
     public GameObject mediumE; public GameObject mediumE2;
@@ -115,20 +113,19 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1;
             }
 
-            if (heatGauge.value == 1 && PlayerMovement.instance.canShoot == true)
+            if (PlayerMovement.instance.heatBar.fillAmount == 0 && PlayerMovement.instance.canShoot == true)
             {
                 PlayerMovement.instance.canShoot = false;
-                heatBar.color = Color.red;
-                PlayerMovement.instance._spr.color = Color.red;
+                PlayerMovement.instance.heatBar.color = Color.red;
             }
-            if (heatGauge.value == 0 && PlayerMovement.instance.canShoot == false)
+            if (PlayerMovement.instance.heatBar.fillAmount == 1 && PlayerMovement.instance.canShoot == false)
             {
                 PlayerMovement.instance.canShoot = true;
-                heatBar.color = Color.white;
+                PlayerMovement.instance.heatBar.color = Color.yellow;
             }
             if (PlayerMovement.instance.canShoot == false)
             {
-                heatGauge.value -= 0.002f;
+                PlayerMovement.instance.heatBar.fillAmount += 0.002f;
             }
             #region Wave Timer
             if (timerF <= 300)
@@ -160,7 +157,7 @@ public class GameManager : MonoBehaviour {
         {
             while (spawn1 == true)
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(2f);
                 zone = UnityEngine.Random.Range(1, 4);
                 if (zone == 1)
                 {

@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public bool canShoot;
     private int fireRate;
+    public Image heatBar;
 
     public SpriteRenderer _spr;
 
@@ -47,6 +48,11 @@ public class PlayerMovement : MonoBehaviour {
         if(health > 30)
         {
             health = 30;
+        }
+
+        if(_spr.color == Color.red)
+        {
+            Invoke("ResetColor", 0.5f);
         }
 
         if(GameManager.instance.paused == false && GameManager.instance.alive == true)
@@ -86,57 +92,53 @@ public class PlayerMovement : MonoBehaviour {
                 if (Input.GetKey(KeyCode.Space) && damage == 1)
                 {
                     Instantiate(bullet, this.transform.position, qrotation);
-                    GameManager.instance.heatGauge.value += 0.02f;
+                    heatBar.fillAmount -= 0.02f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 2)
                 {
                     Instantiate(bullet2, this.transform.position, qrotation);
-                    GameManager.instance.heatGauge.value += 0.01f;
+                    heatBar.fillAmount -= 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 3)
                 {
                     Instantiate(rocket, this.transform.position, qrotation);
-                    GameManager.instance.heatGauge.value += 0.01f;
+                    heatBar.fillAmount -= 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 4)
                 {
                     Instantiate(rocket2, this.transform.position, qrotation);
-                    GameManager.instance.heatGauge.value += 0.01f;
+                    heatBar.fillAmount -= 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage == 5)
                 {
                     Instantiate(laser, this.transform.position, qrotation);
-                    GameManager.instance.heatGauge.value += 0.01f;
+                    heatBar.fillAmount -= 0.01f;
                     fireRate = 5;
                 }
                 if (Input.GetKey(KeyCode.Space) && damage >= 6)
                 {
                     Instantiate(laser2, this.transform.position, qrotation);
-                    GameManager.instance.heatGauge.value += 0.01f;
+                    heatBar.fillAmount -= 0.01f;
                     fireRate = 5;
                 }
                 if (!Input.GetKey(KeyCode.Space) && !Input.GetKeyDown(KeyCode.LeftControl))
                 {
-                    GameManager.instance.heatGauge.value -= 0.003f;
+                    heatBar.fillAmount += 0.003f;
                 }
             }
-            if(canShoot == true)
-            {
-                _spr.color = Color.Lerp(Color.white, Color.red, Mathf.PingPong(GameManager.instance.heatGauge.value, 1));
-            }
 
-            if (canShoot == true && Input.GetKey(KeyCode.LeftControl))
+            if (canShoot == true && Input.GetKey(KeyCode.W))
             {
                 speed = 5;
                 booster1.SetActive(true);
                 booster2.SetActive(true);
-                GameManager.instance.heatGauge.value += 0.01f;
+                heatBar.fillAmount -= 0.01f;
             }
-            if(canShoot == false || Input.GetKeyUp(KeyCode.LeftControl))
+            if(canShoot == false || Input.GetKeyUp(KeyCode.W))
             {
                 speed = 2;
                 booster1.SetActive(false);
@@ -153,5 +155,10 @@ public class PlayerMovement : MonoBehaviour {
         {
             GameManager.instance.GameOver();
         }
+    }
+
+    private void ResetColor()
+    {
+        _spr.color = Color.white;
     }
 }

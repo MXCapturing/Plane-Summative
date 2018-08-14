@@ -14,6 +14,8 @@ public class Damageable : MonoBehaviour {
     public GameObject damageUp;
     public GameObject hpUp;
 
+    public SpriteRenderer _spr;
+
     // Use this for initialization
     void Start ()
     {
@@ -22,6 +24,8 @@ public class Damageable : MonoBehaviour {
 	
     public void doDamage(int damage)
     {
+        _spr.color = Color.red;
+        Invoke("ResetColor", 0.1f);
         currentHP -= damage;
         if (currentHP <= 0)
         {
@@ -41,5 +45,10 @@ public class Damageable : MonoBehaviour {
             Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+
+    private void ResetColor()
+    {
+        _spr.color = Color.white;
     }
 }

@@ -416,6 +416,7 @@ MonoBehaviour:
   explosion: {fileID: 1741282012085732, guid: c68180ce11ec53b408dfc8fc0098a1b9, type: 2}
   damageUp: {fileID: 1762405198747242, guid: c621f289b1407be489fbacf778efa0fd, type: 2}
   hpUp: {fileID: 1063521058463630, guid: 6d8bb2577fa75c84cae4b1300fd514bc, type: 2}
+  _spr: {fileID: 212388158607185270}
 --- !u!114 &114519848770338790
 MonoBehaviour:
   m_ObjectHideFlags: 1
