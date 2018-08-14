@@ -115,10 +115,11 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1;
             }
 
-            if (heatGauge.value == 1)
+            if (heatGauge.value == 1 && PlayerMovement.instance.canShoot == true)
             {
                 PlayerMovement.instance.canShoot = false;
                 heatBar.color = Color.red;
+                PlayerMovement.instance._spr.color = Color.red;
             }
             if (heatGauge.value == 0 && PlayerMovement.instance.canShoot == false)
             {

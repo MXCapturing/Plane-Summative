@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour {
     public bool canShoot;
     private int fireRate;
 
+    public SpriteRenderer _spr;
+
     void Awake()
     {
         if (instance == null)
@@ -122,7 +124,12 @@ public class PlayerMovement : MonoBehaviour {
                     GameManager.instance.heatGauge.value -= 0.003f;
                 }
             }
-            if(canShoot == true && Input.GetKey(KeyCode.LeftControl))
+            if(canShoot == true)
+            {
+                _spr.color = Color.Lerp(Color.white, Color.red, Mathf.PingPong(GameManager.instance.heatGauge.value, 1));
+            }
+
+            if (canShoot == true && Input.GetKey(KeyCode.LeftControl))
             {
                 speed = 5;
                 booster1.SetActive(true);
