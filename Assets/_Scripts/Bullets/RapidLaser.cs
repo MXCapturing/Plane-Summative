@@ -16,15 +16,18 @@ public class RapidLaser : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(impact, this.transform.position, this.transform.rotation);
-        GameObject objectCollided = other.gameObject;
-        Damageable damageableComponent = objectCollided.GetComponent<Damageable>();
-
-        if (damageableComponent)
+        if (other.tag == "Enemy")
         {
-            damageableComponent.doDamage(damage);
-            GameManager.instance.score += damage;
-            Destroy(gameObject);
+            Instantiate(impact, this.transform.position, this.transform.rotation);
+            GameObject objectCollided = other.gameObject;
+            Damageable damageableComponent = objectCollided.GetComponent<Damageable>();
+
+            if (damageableComponent)
+            {
+                damageableComponent.doDamage(damage);
+                GameManager.instance.score += damage;
+                Destroy(gameObject);
+            }
         }
     }
 

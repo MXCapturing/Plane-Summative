@@ -113,12 +113,12 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1;
             }
 
-            if (PlayerMovement.instance.heatBar.fillAmount == 0 && PlayerMovement.instance.canShoot == true)
+            if (PlayerMovement.instance.heatBar.fillAmount <= 0.01 && PlayerMovement.instance.canShoot == true)
             {
                 PlayerMovement.instance.canShoot = false;
                 PlayerMovement.instance.heatBar.color = Color.red;
             }
-            if (PlayerMovement.instance.heatBar.fillAmount == 1 && PlayerMovement.instance.canShoot == false)
+            if (PlayerMovement.instance.heatBar.fillAmount >= 1 && PlayerMovement.instance.canShoot == false)
             {
                 PlayerMovement.instance.canShoot = true;
                 PlayerMovement.instance.heatBar.color = Color.yellow;
