@@ -12,18 +12,16 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
 
     public Camera pCam;
-    public GameObject bullet; public GameObject bullet2;
-    public GameObject rocket; public GameObject rocket2;
-    public GameObject laser; public GameObject laser2;
+
     public GameObject booster1; public GameObject booster2;
 
-    private Quaternion qrotation;
+
 
     public float health;
     public int damage;
 
     public bool canShoot;
-    private int fireRate;
+    public int fireRate;
     public Image heatBar;
 
     public SpriteRenderer _spr;
@@ -57,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
-            qrotation = this.transform.rotation;
+
 
             health -= 0.01f;
 
@@ -87,49 +85,7 @@ public class PlayerMovement : MonoBehaviour {
                 this.transform.eulerAngles += new Vector3(0, 3f, 0);
             }
             #region Damage
-            if(canShoot == true && fireRate <= 0)
-            {
-                if (Input.GetKey(KeyCode.Space) && damage == 1)
-                {
-                    Instantiate(bullet, this.transform.position, qrotation);
-                    heatBar.fillAmount -= 0.02f;
-                    fireRate = 5;
-                }
-                if (Input.GetKey(KeyCode.Space) && damage == 2)
-                {
-                    Instantiate(bullet2, this.transform.position, qrotation);
-                    heatBar.fillAmount -= 0.01f;
-                    fireRate = 5;
-                }
-                if (Input.GetKey(KeyCode.Space) && damage == 3)
-                {
-                    Instantiate(rocket, this.transform.position, qrotation);
-                    heatBar.fillAmount -= 0.01f;
-                    fireRate = 5;
-                }
-                if (Input.GetKey(KeyCode.Space) && damage == 4)
-                {
-                    Instantiate(rocket2, this.transform.position, qrotation);
-                    heatBar.fillAmount -= 0.01f;
-                    fireRate = 5;
-                }
-                if (Input.GetKey(KeyCode.Space) && damage == 5)
-                {
-                    Instantiate(laser, this.transform.position, qrotation);
-                    heatBar.fillAmount -= 0.01f;
-                    fireRate = 5;
-                }
-                if (Input.GetKey(KeyCode.Space) && damage >= 6)
-                {
-                    Instantiate(laser2, this.transform.position, qrotation);
-                    heatBar.fillAmount -= 0.01f;
-                    fireRate = 5;
-                }
-                if (!Input.GetKey(KeyCode.Space) && !Input.GetKeyDown(KeyCode.LeftControl))
-                {
-                    heatBar.fillAmount += 0.003f;
-                }
-            }
+  
 
             if (canShoot == true && Input.GetKey(KeyCode.W))
             {
