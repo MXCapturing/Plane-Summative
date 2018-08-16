@@ -15,6 +15,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public GameObject booster1; public GameObject booster2;
 
+    public GameObject explosion;
+
+
+    public float oobTimerf;
+    public int oobTimerInt;
+    public int timeLeft;
 
 
     public float health;
@@ -38,6 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
         health = 30;
         damage = 1;
+        timeLeft = 5;
     }
 	
 	// Update is called once per frame
@@ -53,6 +60,13 @@ public class PlayerMovement : MonoBehaviour {
             Invoke("ResetColor", 0.5f);
         }
 
+        if(transform.position.x < 800 && transform.position.x > -800 && transform.position.z < 800 && transform.position.z > -800)
+        {
+            timeLeft = 5;
+            oobTimerf = 0;
+            GameManager.instance.outOfBounds.SetActive(false);
+        }
+
         if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
 
@@ -62,19 +76,40 @@ public class PlayerMovement : MonoBehaviour {
             transform.position += pCam.transform.up * speed;
             if(transform.position.z > 800)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, -800);
+                GameManager.instance.outOfBounds.SetActive(true);
+                oobTimerf = oobTimerf + Time.deltaTime;
+                oobTimerInt = Mathf.RoundToInt(oobTimerf);
+                timeLeft = 5 - oobTimerInt;
+                GameManager.instance.timerText.text = "" + timeLeft;
             }
             if (transform.position.z < -800)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, 800);
+                GameManager.instance.outOfBounds.SetActive(true);
+                oobTimerf = oobTimerf + Time.deltaTime;
+                oobTimerInt = Mathf.RoundToInt(oobTimerf);
+                timeLeft = 5 - oobTimerInt;
+                GameManager.instance.timerText.text = "" + timeLeft;
             }
             if (transform.position.x > 800)
             {
-                transform.position = new Vector3(-800, transform.position.y, transform.position.z);
+                GameManager.instance.outOfBounds.SetActive(true);
+                oobTimerf = oobTimerf + Time.deltaTime;
+                oobTimerInt = Mathf.RoundToInt(oobTimerf);
+                timeLeft = 5 - oobTimerInt;
+                GameManager.instance.timerText.text = "" + timeLeft;
+            }
+
+            if(timeLeft <= 0)
+            {
+                Invoke("GameOver", 0f);
             }
             if (transform.position.x < -800)
             {
-                transform.position = new Vector3(800, transform.position.y, transform.position.z);
+                GameManager.instance.outOfBounds.SetActive(true);
+                oobTimerf = oobTimerf + Time.deltaTime;
+                oobTimerInt = Mathf.RoundToInt(oobTimerf);
+                timeLeft = 5 - oobTimerInt;
+                GameManager.instance.timerText.text = "" + timeLeft;
             }
             if (Input.GetKey(KeyCode.A))
             {
@@ -107,14 +142,21 @@ public class PlayerMovement : MonoBehaviour {
             #endregion
         }
 
-        if(health <= 0)
+        if(health <= 0 && GameManager.instance.alive == true)
         {
-            GameManager.instance.GameOver();
+            Invoke("GameOver", 0f);
         }
     }
 
     private void ResetColor()
     {
         _spr.color = Color.white;
+    }
+
+    public void GameOver()
+    {
+        Instantiate(explosion, this.transform.position, Quaternion.identity);
+        _spr.enabled = false;
+        GameManager.instance.GameOver();
     }
 }

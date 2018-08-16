@@ -14,6 +14,9 @@ public class EnemyScript : MonoBehaviour {
     public int hp;
     public Image hpBar;
 
+    public AudioSource soundMaker;
+    public AudioClip sound;
+
     [SerializeField]
     private GameObject _destination;
 
@@ -36,7 +39,9 @@ public class EnemyScript : MonoBehaviour {
         {
             _destination = GameObject.Find("Player3(Clone)");
         }
-	}
+
+        soundMaker.clip = sound;
+    }
 
     void SetDestination()
     {
@@ -66,6 +71,7 @@ public class EnemyScript : MonoBehaviour {
 
     private void Shooting()
     {
+        soundMaker.Play();
         qrotation = this.transform.rotation;
         Instantiate(bullet, this.transform.position, qrotation);
     }

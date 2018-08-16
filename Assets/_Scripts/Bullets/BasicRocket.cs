@@ -9,15 +9,22 @@ public class BasicRocket : MonoBehaviour {
 
     public GameObject impact;
 
+    public AudioClip impactSound;
+    public AudioSource soundSource;
+
+    public SpriteRenderer _spr;
+
     void Start()
     {
         Invoke("BulletDrop", destroyTimer);
+        soundSource.clip = impactSound;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
+            soundSource.Play();
             Instantiate(impact, this.transform.position, this.transform.rotation);
             GameObject objectCollided = other.gameObject;
             Damageable damageableComponent = objectCollided.GetComponent<Damageable>();
@@ -26,7 +33,9 @@ public class BasicRocket : MonoBehaviour {
             {
                 damageableComponent.doDamage(damage);
                 GameManager.instance.score += damage;
-                Destroy(gameObject);
+                Invoke("BulletDrop", 1);
+                this.GetComponent<BulletMovement>().speed = 0;
+                _spr.enabled = false;
             }
         }
     }

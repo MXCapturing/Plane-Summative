@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour {
     private float zCoord;
     private int zone;
 
+    public Text timerText;
+    public GameObject outOfBounds;
+
     public float timerF;
     public int timerInt;
     public Text timer;

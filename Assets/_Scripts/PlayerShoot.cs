@@ -12,9 +12,14 @@ public class PlayerShoot : MonoBehaviour {
 
     private Quaternion qrotation;
 
+    public AudioSource audioSource;
+    public AudioClip bulletSound;
+    public AudioClip rocketSound;
+    public AudioClip laserSound;
+
     // Use this for initialization
     void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -26,6 +31,8 @@ public class PlayerShoot : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.Space) && PlayerMovement.instance.damage == 1)
             {
+                audioSource.clip = bulletSound;
+                audioSource.Play();
                 Instantiate(muzzleFlash, this.transform.position, qrotation);
                 Instantiate(bullet, this.transform.position, qrotation);
                 PlayerMovement.instance.heatBar.fillAmount -= 0.02f;
@@ -33,6 +40,8 @@ public class PlayerShoot : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.Space) && PlayerMovement.instance.damage == 2)
             {
+                audioSource.clip = bulletSound;
+                audioSource.Play();
                 Instantiate(muzzleFlash, this.transform.position, qrotation);
                 Instantiate(bullet2, this.transform.position, qrotation);
                 PlayerMovement.instance.heatBar.fillAmount -= 0.01f;
@@ -40,6 +49,8 @@ public class PlayerShoot : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.Space) && PlayerMovement.instance.damage == 3)
             {
+                audioSource.clip = rocketSound;
+                audioSource.Play();
                 Instantiate(muzzleFlash, this.transform.position, qrotation);
                 Instantiate(rocket, this.transform.position, qrotation);
                 PlayerMovement.instance.heatBar.fillAmount -= 0.01f;
@@ -47,6 +58,8 @@ public class PlayerShoot : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.Space) && PlayerMovement.instance.damage == 4)
             {
+                audioSource.clip = rocketSound;
+                audioSource.Play();
                 Instantiate(muzzleFlash, this.transform.position, qrotation);
                 Instantiate(rocket2, this.transform.position, qrotation);
                 PlayerMovement.instance.heatBar.fillAmount -= 0.01f;
@@ -54,6 +67,8 @@ public class PlayerShoot : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.Space) && PlayerMovement.instance.damage == 5)
             {
+                audioSource.clip = laserSound;
+                audioSource.Play();
                 Instantiate(muzzleFlash, this.transform.position, qrotation);
                 Instantiate(laser, this.transform.position, qrotation);
                 PlayerMovement.instance.heatBar.fillAmount -= 0.01f;
@@ -61,6 +76,8 @@ public class PlayerShoot : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.Space) && PlayerMovement.instance.damage >= 6)
             {
+                audioSource.clip = laserSound;
+                audioSource.Play();
                 Instantiate(muzzleFlash, this.transform.position, qrotation);
                 Instantiate(laser2, this.transform.position, qrotation);
                 PlayerMovement.instance.heatBar.fillAmount -= 0.01f;

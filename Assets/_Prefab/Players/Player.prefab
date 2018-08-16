@@ -145,6 +145,8 @@ GameObject:
   - component: {fileID: 23893555344974708}
   - component: {fileID: 65229939542309940}
   - component: {fileID: 114526763261902142}
+  - component: {fileID: 82777295806209170}
+  - component: {fileID: 81773689067697194}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -180,7 +182,6 @@ GameObject:
   - component: {fileID: 4060529807511120}
   - component: {fileID: 20420630487421520}
   - component: {fileID: 124296175449818512}
-  - component: {fileID: 81089882783861634}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -598,13 +599,108 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &81089882783861634
+--- !u!81 &81773689067697194
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1743542508493268}
+  m_GameObject: {fileID: 1572589076515826}
   m_Enabled: 1
+--- !u!82 &82777295806209170
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572589076515826}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95365402980292118
 Animator:
   serializedVersion: 3
@@ -683,6 +779,10 @@ MonoBehaviour:
   pCam: {fileID: 20420630487421520}
   booster1: {fileID: 1071877295160252}
   booster2: {fileID: 1698524415795570}
+  explosion: {fileID: 1741282012085732, guid: c68180ce11ec53b408dfc8fc0098a1b9, type: 2}
+  oobTimerf: 0
+  oobTimerInt: 0
+  timeLeft: 0
   health: 0
   damage: 0
   canShoot: 0
@@ -708,6 +808,10 @@ MonoBehaviour:
   laser2: {fileID: 1153073225553642, guid: 456433686781c7344b4cde13881b0200, type: 2}
   muzzleFlash: {fileID: 1439094041890754, guid: 5380924690a79ab488761e8e045e3a43,
     type: 2}
+  audioSource: {fileID: 82777295806209170}
+  bulletSound: {fileID: 8300000, guid: ae63cba088ba30742a65effffb31811b, type: 3}
+  rocketSound: {fileID: 8300000, guid: ae68de465a483bf4d9833b1b30fd8a83, type: 3}
+  laserSound: {fileID: 8300000, guid: 6a94b68a10258d54880ca23b2894cfcb, type: 3}
 --- !u!114 &114969083058377186
 MonoBehaviour:
   m_ObjectHideFlags: 1

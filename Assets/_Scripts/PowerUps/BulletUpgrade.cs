@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class BulletUpgrade : MonoBehaviour {
 
+    public AudioClip powerUp;
+    public AudioSource powerSource;
+
+    public SpriteRenderer _spr;
+
     private void Start()
     {
+        powerSource.clip = powerUp;
         Invoke("Destroy", 3);
     }
 
@@ -13,8 +19,10 @@ public class BulletUpgrade : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            powerSource.Play();
             PlayerMovement.instance.damage++;
-            Destroy(gameObject);
+            _spr.enabled = false;
+            Invoke("Destroy", 1f);
         }
     }
 

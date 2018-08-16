@@ -12,6 +12,9 @@ public class MediumsScript : MonoBehaviour {
     public GameObject bullet;
     private Quaternion qrotation;
 
+    public AudioSource soundMaker;
+    public AudioClip sound;
+
     public int hp;
     public Image hpBar;
 
@@ -38,6 +41,8 @@ public class MediumsScript : MonoBehaviour {
         {
             _destination = GameObject.Find("Player3(Clone)");
         }
+
+        soundMaker.clip = sound;
     }
 
     void SetDestination()
@@ -68,6 +73,7 @@ public class MediumsScript : MonoBehaviour {
 
     private void Shooting()
     {
+        soundMaker.Play();
         qrotation = this.transform.rotation;
         Instantiate(bullet, this.transform.position, qrotation);
     }
