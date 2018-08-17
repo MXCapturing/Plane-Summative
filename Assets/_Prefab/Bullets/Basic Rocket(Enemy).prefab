@@ -238,7 +238,7 @@ MonoBehaviour:
   destroyTimer: 5
   damage: 1
   soundMaker: {fileID: 82004917886031654}
-  sound: {fileID: 8300000, guid: f8e99e3aa616b5c448ff8c1bca6091c2, type: 3}
+  sound: {fileID: 8300000, guid: 110faf308e16a544cace7e632f230611, type: 3}
   impact: {fileID: 1901549699185396, guid: 51f407e69735f184391b64ed6d5858ed, type: 2}
   _spr: {fileID: 212645308454233714}
 --- !u!136 &136540188925038422

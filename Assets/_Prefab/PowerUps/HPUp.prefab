@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ce84b8040ae804d8e0dbb90bda0dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 8300000, guid: 8b559aaa82d4a3e408c50aa038b38196, type: 3}
+  powerUp: {fileID: 8300000, guid: 26c791dec780e09438535fde73b547d7, type: 3}
   powerSource: {fileID: 82857268412402914}
   _spr: {fileID: 212175025015803536}
 --- !u!212 &212175025015803536

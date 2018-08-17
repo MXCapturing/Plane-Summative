@@ -17,10 +17,14 @@ public class PlayerMovement : MonoBehaviour {
 
     public GameObject explosion;
 
+    public AudioSource boostMaker;
+    public AudioClip boost;
 
     public float oobTimerf;
     public int oobTimerInt;
     public int timeLeft;
+
+    public float dmgTimer;
 
 
     public float health;
@@ -31,6 +35,8 @@ public class PlayerMovement : MonoBehaviour {
     public Image heatBar;
 
     public SpriteRenderer _spr;
+    public SpriteRenderer _sprLeft;
+    public SpriteRenderer _sprRight;
 
     void Awake()
     {
@@ -45,6 +51,7 @@ public class PlayerMovement : MonoBehaviour {
         health = 30;
         damage = 1;
         timeLeft = 5;
+        boostMaker.clip = boost;
     }
 	
 	// Update is called once per frame
@@ -111,17 +118,30 @@ public class PlayerMovement : MonoBehaviour {
                 timeLeft = 5 - oobTimerInt;
                 GameManager.instance.timerText.text = "" + timeLeft;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
             {
                 this.transform.eulerAngles += new Vector3(0, -3f, 0);
+                _spr.enabled = false;
+                _sprLeft.enabled = true;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
             {
                 this.transform.eulerAngles += new Vector3(0, 3f, 0);
+                _spr.enabled = false;
+                _sprRight.enabled = true;
+            }
+            if(!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            {
+                _spr.enabled = true;
+                _sprLeft.enabled = false;
+                _sprRight.enabled = false;
             }
             #region Damage
   
-
+            if(canShoot == true && Input.GetKeyDown(KeyCode.W))
+            {
+                boostMaker.Play();
+            }
             if (canShoot == true && Input.GetKey(KeyCode.W))
             {
                 speed = 5;
@@ -134,10 +154,26 @@ public class PlayerMovement : MonoBehaviour {
                 speed = 2;
                 booster1.SetActive(false);
                 booster2.SetActive(false);
+                boostMaker.Stop();
             }
             if(fireRate > 0)
             {
                 fireRate--;
+            }
+
+            dmgTimer = dmgTimer + Time.deltaTime;
+            if(dmgTimer >= 15)
+            {
+                damage--;
+                dmgTimer = 0;
+            }
+            if(damage < 1)
+            {
+                damage = 1;
+            }
+            if(damage > 6)
+            {
+                damage = 6;
             }
             #endregion
         }

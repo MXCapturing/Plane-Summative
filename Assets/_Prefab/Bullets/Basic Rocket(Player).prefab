@@ -226,7 +226,7 @@ MonoBehaviour:
   destroyTimer: 2
   damage: 5
   impact: {fileID: 1901549699185396, guid: 51f407e69735f184391b64ed6d5858ed, type: 2}
-  impactSound: {fileID: 8300000, guid: f8e99e3aa616b5c448ff8c1bca6091c2, type: 3}
+  impactSound: {fileID: 8300000, guid: 110faf308e16a544cace7e632f230611, type: 3}
   soundSource: {fileID: 82835970728667152}
   _spr: {fileID: 212714184726182066}
 --- !u!114 &114603088277148814

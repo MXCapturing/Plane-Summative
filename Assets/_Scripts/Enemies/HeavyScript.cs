@@ -5,7 +5,14 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class HeavyScript : MonoBehaviour {
+
+    private float timerF;
+    private int timerInt;
+    public GameObject bullet;
     private Quaternion qrotation;
+
+    public AudioSource soundMaker;
+    public AudioClip sound;
 
     public int hp;
     public Image hpBar;
@@ -19,7 +26,11 @@ public class HeavyScript : MonoBehaviour {
     void Start () {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
-        _destination = GameObject.Find("BaseCube");
+        InvokeRepeating("Shooting", 2f, 5f);
+        _destination = GameObject.Find("Bait");
+
+        soundMaker.clip = sound;
+        _Navmesh.speed += GameManager.instance.speedPoints;
     }
 
     void SetDestination()
@@ -45,5 +56,28 @@ public class HeavyScript : MonoBehaviour {
         {
             _Navmesh.isStopped = false;
         }
+
+        if (transform.position.x < 450 && transform.position.x > -450 && transform.position.z < 450 && transform.position.z > -450)
+        {
+            if (PlayerPrefs.GetInt("Player") == 1)
+            {
+                _destination = GameObject.Find("Player(Clone)");
+            }
+            if (PlayerPrefs.GetInt("Player") == 2)
+            {
+                _destination = GameObject.Find("Player2(Clone)");
+            }
+            if (PlayerPrefs.GetInt("Player") == 3)
+            {
+                _destination = GameObject.Find("Player3(Clone)");
+            }
+        }
+    }
+
+    private void Shooting()
+    {
+        soundMaker.Play();
+        qrotation = this.transform.rotation;
+        Instantiate(bullet, this.transform.position, qrotation);
     }
 }

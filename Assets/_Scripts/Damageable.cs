@@ -32,7 +32,7 @@ public class Damageable : MonoBehaviour {
             GameManager.instance.score += 50;
             PlayerMovement.instance.health += 5;
 
-            powerUp = Random.Range(0, 2);
+            powerUp = Random.Range(0, 3);
             dropChance = Random.Range(0, 20);
             if(dropChance >= 15 && powerUp == 0)
             {

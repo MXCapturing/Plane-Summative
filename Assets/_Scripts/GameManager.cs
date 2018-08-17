@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour {
     public GameObject outOfBounds;
 
     public float timerF;
+    public float enemySpeed;
+    public int speedPoints;
     public int timerInt;
     public Text timer;
     public int score;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour {
     private bool spawn2;
     private bool spawn3;
     private bool spawn4;
+    private bool spawn5;
 
     private void Awake()
     {
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour {
         spawn2 = false;
         spawn3 = false;
         spawn4 = false;
+        spawn5 = false;
         score = 0;
 
         paused = false;
@@ -89,6 +93,7 @@ public class GameManager : MonoBehaviour {
 		if(alive == true)
         {
             timerF = timerF + Time.deltaTime * 10;
+            enemySpeed = enemySpeed + Time.deltaTime;
             timerInt = Mathf.RoundToInt(timerF) + score;
             timer.text = "Score: " + timerInt;
 
@@ -97,6 +102,12 @@ public class GameManager : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 paused = !paused;
+            }
+
+            if(enemySpeed >= 10)
+            {
+                speedPoints += 10;
+                enemySpeed = 0;
             }
 
             if(paused == true)
@@ -150,13 +161,35 @@ public class GameManager : MonoBehaviour {
                 spawn3 = false;
                 spawn4 = true;
             }
+            if(timerF >= 1201 && timerF <= 1500)
+            {
+                spawn4 = true;
+                spawn1 = true;
+                spawn2 = true;
+            }
+            if(timerF >= 1501 && timerF <= 1800)
+            {
+                spawn4 = true;
+                spawn1 = false;
+                spawn2 = false;
+                spawn3 = true;
+                spawn5 = true;
+            }
+            if(timerF >= 1801)
+            {
+                spawn1 = true;
+                spawn2 = true;
+                spawn3 = true;
+                spawn4 = true;
+                spawn5 = true;
+            }
             #endregion
         }
     }
 
-   IEnumerator Wave1()
+    IEnumerator Wave1()
     {
-        if(alive == true)
+        if (alive == true)
         {
             while (spawn1 == true)
             {
@@ -165,24 +198,24 @@ public class GameManager : MonoBehaviour {
                 if (zone == 1)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(xCoord, 100, 900), Quaternion.identity);
                 }
                 if (zone == 2)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(900, 100, zCoord), Quaternion.identity);
                 }
                 if (zone == 3)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(xCoord, 100, -900), Quaternion.identity);
                 }
                 if (zone == 4)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(-900, 100, zCoord), Quaternion.identity);
                 }
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(1f);
             }
             while (spawn2 == true)
             {
@@ -191,60 +224,60 @@ public class GameManager : MonoBehaviour {
                 if (zone == 1)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(xCoord, 100, 900), Quaternion.identity);
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(xCoord, 100, 900), Quaternion.identity);
                 }
                 if (zone == 2)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(900, 100, zCoord), Quaternion.identity);
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(900, 100, zCoord), Quaternion.identity);
                 }
                 if (zone == 3)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(xCoord, 100, -900), Quaternion.identity);
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(xCoord, 100, -900), Quaternion.identity);
                 }
                 if (zone == 4)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(-900, 100, zCoord), Quaternion.identity);
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(-900, 100, zCoord), Quaternion.identity);
                 }
                 yield return new WaitForSeconds(2f);
             }
             while (spawn3 == true)
             {
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
                 zone = UnityEngine.Random.Range(1, 4);
                 if (zone == 1)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    Instantiate(mediumE, new Vector3(xCoord, 100, 900), Quaternion.identity);
                 }
                 if (zone == 2)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(900, 100, zCoord), Quaternion.identity);
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(900, 100, zCoord), Quaternion.identity);
                 }
                 if (zone == 3)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE2, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    Instantiate(mediumE2, new Vector3(xCoord, 100, -900), Quaternion.identity);
                 }
                 if (zone == 4)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE, new Vector3(-900, 100, zCoord), Quaternion.identity);
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(lightE2, new Vector3(-900, 100, zCoord), Quaternion.identity);
                 }
                 yield return new WaitForSeconds(2f);
             }
@@ -255,28 +288,62 @@ public class GameManager : MonoBehaviour {
                 if (zone == 1)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    Instantiate(mediumE, new Vector3(xCoord, 100, 900), Quaternion.identity);
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE2, new Vector3(xCoord, 100, 700), Quaternion.identity);
+                    Instantiate(mediumE2, new Vector3(xCoord, 100, 900), Quaternion.identity);
                 }
                 if (zone == 2)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(heavyE, new Vector3(700, 100, zCoord), Quaternion.identity);
+                    Instantiate(heavyE, new Vector3(900, 100, zCoord), Quaternion.identity);
                 }
                 if (zone == 3)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    Instantiate(mediumE, new Vector3(xCoord, 100, -900), Quaternion.identity);
                     xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE2, new Vector3(xCoord, 100, -700), Quaternion.identity);
+                    Instantiate(mediumE2, new Vector3(xCoord, 100, -900), Quaternion.identity);
                 }
                 if (zone == 4)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(mediumE, new Vector3(-900, 100, zCoord), Quaternion.identity);
                     zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE2, new Vector3(-700, 100, zCoord), Quaternion.identity);
+                    Instantiate(mediumE2, new Vector3(-900, 100, zCoord), Quaternion.identity);
+                }
+                yield return new WaitForSeconds(4f);
+            }
+            while (spawn5 == true)
+            {
+                yield return new WaitForSeconds(2f);
+                zone = UnityEngine.Random.Range(1, 4);
+                if (zone == 1)
+                {
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(heavyE, new Vector3(xCoord, 100, 900), Quaternion.identity);
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(mediumE2, new Vector3(xCoord, 100, 900), Quaternion.identity);
+                }
+                if (zone == 2)
+                {
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(heavyE, new Vector3(900, 100, zCoord), Quaternion.identity);
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(heavyE2, new Vector3(900, 100, zCoord), Quaternion.identity);
+                }
+                if (zone == 3)
+                {
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(heavyE, new Vector3(xCoord, 100, -900), Quaternion.identity);
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(mediumE2, new Vector3(xCoord, 100, -900), Quaternion.identity);
+                }
+                if (zone == 4)
+                {
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(heavyE, new Vector3(-900, 100, zCoord), Quaternion.identity);
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(heavyE2, new Vector3(-900, 100, zCoord), Quaternion.identity);
                 }
                 yield return new WaitForSeconds(3f);
             }

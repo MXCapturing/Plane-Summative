@@ -12,5 +12,12 @@ public class MusicScript : MonoBehaviour {
         musicPlayer.clip = music;
         musicPlayer.Play();
     }
-	
+
+    private void Update()
+    {
+        if(GameManager.instance.alive == false)
+        {
+            musicPlayer.Stop();
+        }
+    }
 }

@@ -239,7 +239,7 @@ MonoBehaviour:
   damage: 1
   impact: {fileID: 1901549699185396, guid: 51f407e69735f184391b64ed6d5858ed, type: 2}
   soundMaker: {fileID: 82620084959263160}
-  sound: {fileID: 8300000, guid: f8e99e3aa616b5c448ff8c1bca6091c2, type: 3}
+  sound: {fileID: 8300000, guid: 110faf308e16a544cace7e632f230611, type: 3}
   _spr: {fileID: 212500733879024370}
 --- !u!136 &136877221976227310
 CapsuleCollider:

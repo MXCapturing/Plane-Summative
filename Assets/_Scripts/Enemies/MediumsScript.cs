@@ -29,20 +29,10 @@ public class MediumsScript : MonoBehaviour {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
-        if(PlayerPrefs.GetInt("Player") == 1)
-        {
-            _destination = GameObject.Find("Player(Clone)");
-        }
-        if (PlayerPrefs.GetInt("Player") == 2)
-        {
-            _destination = GameObject.Find("Player2(Clone)");
-        }
-        if (PlayerPrefs.GetInt("Player") == 3)
-        {
-            _destination = GameObject.Find("Player3(Clone)");
-        }
+        _destination = GameObject.Find("Bait");
 
         soundMaker.clip = sound;
+        _Navmesh.speed += GameManager.instance.speedPoints;
     }
 
     void SetDestination()
@@ -68,6 +58,22 @@ public class MediumsScript : MonoBehaviour {
         if (GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             _Navmesh.isStopped = false;
+        }
+
+        if (transform.position.x < 450 && transform.position.x > -450 && transform.position.z < 450 && transform.position.z > -450)
+        {
+            if (PlayerPrefs.GetInt("Player") == 1)
+            {
+                _destination = GameObject.Find("Player(Clone)");
+            }
+            if (PlayerPrefs.GetInt("Player") == 2)
+            {
+                _destination = GameObject.Find("Player2(Clone)");
+            }
+            if (PlayerPrefs.GetInt("Player") == 3)
+            {
+                _destination = GameObject.Find("Player3(Clone)");
+            }
         }
     }
 
