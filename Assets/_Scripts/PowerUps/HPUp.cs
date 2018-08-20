@@ -12,7 +12,7 @@ public class HPUp : MonoBehaviour {
     private void Start()
     {
         powerSource.clip = powerUp;
-        Invoke("Destroy", 3);
+        Invoke("Destroy", 5);
     }
 
     private void OnTriggerEnter(Collider other)

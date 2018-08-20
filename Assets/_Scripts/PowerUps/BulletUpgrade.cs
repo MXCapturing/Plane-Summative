@@ -12,7 +12,7 @@ public class BulletUpgrade : MonoBehaviour {
     private void Start()
     {
         powerSource.clip = powerUp;
-        Invoke("Destroy", 3);
+        Invoke("Destroy", 5);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +21,7 @@ public class BulletUpgrade : MonoBehaviour {
         {
             powerSource.Play();
             PlayerMovement.instance.damage++;
+            PlayerMovement.instance.dmgTimer = 0;
             _spr.enabled = false;
             Invoke("Destroy", 1f);
         }

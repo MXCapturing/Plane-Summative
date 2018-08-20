@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour {
                 PlayerMovement.instance.canShoot = true;
                 PlayerMovement.instance.heatBar.color = Color.yellow;
             }
-            if (PlayerMovement.instance.canShoot == false)
+            if (PlayerMovement.instance.canShoot == false && !Input.GetKey(KeyCode.S))
             {
                 PlayerMovement.instance.heatBar.fillAmount += 0.002f;
             }

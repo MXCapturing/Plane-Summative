@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     //private Rigidbody _rb;
 
     public float speed;
+    public float defaultSpeed;
 
     public Camera pCam;
 
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
     public float health;
+    public float maxHealth;
     public int damage;
 
     public bool canShoot;
@@ -48,21 +50,22 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        health = 30;
         damage = 1;
         timeLeft = 5;
         boostMaker.clip = boost;
+        health = maxHealth;
+        speed = defaultSpeed;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if(health > 30)
+        if(health > maxHealth)
         {
-            health = 30;
+            health = maxHealth;
         }
 
-        if(_spr.color == Color.red)
+        if(_spr.color == Color.red || _sprLeft.color == Color.red || _sprRight.color == Color.red)
         {
             Invoke("ResetColor", 0.5f);
         }
@@ -118,15 +121,27 @@ public class PlayerMovement : MonoBehaviour {
                 timeLeft = 5 - oobTimerInt;
                 GameManager.instance.timerText.text = "" + timeLeft;
             }
-            if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W))
             {
-                this.transform.eulerAngles += new Vector3(0, -3f, 0);
+                this.transform.eulerAngles += new Vector3(0, 2f, 0);
+                _spr.enabled = false;
+                _sprRight.enabled = true;
+            }
+            if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W))
+            {
+                this.transform.eulerAngles += new Vector3(0, -2f, 0);
                 _spr.enabled = false;
                 _sprLeft.enabled = true;
             }
-            if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
             {
-                this.transform.eulerAngles += new Vector3(0, 3f, 0);
+                this.transform.eulerAngles += new Vector3(0, -4f, 0);
+                _spr.enabled = false;
+                _sprLeft.enabled = true;
+            }
+            if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W))
+            {
+                this.transform.eulerAngles += new Vector3(0, 4f, 0);
                 _spr.enabled = false;
                 _sprRight.enabled = true;
             }
@@ -136,22 +151,64 @@ public class PlayerMovement : MonoBehaviour {
                 _sprLeft.enabled = false;
                 _sprRight.enabled = false;
             }
+            if (Input.GetKey(KeyCode.S) && canShoot == true)
+            {
+                if(Input.GetKeyDown(KeyCode.S) && canShoot == true)
+                {
+                    speed = defaultSpeed - 1;
+                }
+                booster1.SetActive(false);
+                booster2.SetActive(false);
+                boostMaker.Stop();
+                if (!Input.GetKey(KeyCode.Space))
+                {
+                    heatBar.fillAmount += 0.003f;
+                }
+            }
+            if(Input.GetKeyUp(KeyCode.S) && !Input.GetKey(KeyCode.W))
+            {
+                speed = defaultSpeed;
+                heatBar.fillAmount += 0.002f;
+            }
+            if(canShoot == false && Input.GetKey(KeyCode.S))
+            {
+                if (canShoot == false && Input.GetKeyDown(KeyCode.S))
+                {
+                    speed = defaultSpeed - 1.5f;
+                }
+                heatBar.fillAmount += 0.003f;
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    this.transform.eulerAngles += new Vector3(0, -0.05f, 0);
+                    _spr.enabled = false;
+                    _sprLeft.enabled = true;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    this.transform.eulerAngles += new Vector3(0, 0.05f, 0);
+                    _spr.enabled = false;
+                    _sprRight.enabled = true;
+                }
+            }
             #region Damage
   
-            if(canShoot == true && Input.GetKeyDown(KeyCode.W))
+            if(canShoot == true && Input.GetKeyDown(KeyCode.W) && !Input.GetKey(KeyCode.S))
             {
                 boostMaker.Play();
             }
-            if (canShoot == true && Input.GetKey(KeyCode.W))
+            if (canShoot == true && Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
             {
-                speed = 5;
+                if (canShoot == true && Input.GetKeyDown(KeyCode.W) && !Input.GetKey(KeyCode.S))
+                {
+                    speed = defaultSpeed * 1.4f;
+                }
                 booster1.SetActive(true);
                 booster2.SetActive(true);
-                heatBar.fillAmount -= 0.01f;
+                heatBar.fillAmount -= 0.005f;
             }
-            if(canShoot == false || Input.GetKeyUp(KeyCode.W))
+            if(canShoot == false && !Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W) && !Input.GetKey(KeyCode.S))
             {
-                speed = 2;
+                speed = defaultSpeed;
                 booster1.SetActive(false);
                 booster2.SetActive(false);
                 boostMaker.Stop();
@@ -187,12 +244,20 @@ public class PlayerMovement : MonoBehaviour {
     private void ResetColor()
     {
         _spr.color = Color.white;
+        _sprLeft.color = Color.white;
+        _sprRight.color = Color.white;
     }
 
     public void GameOver()
     {
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         _spr.enabled = false;
+        _sprLeft.enabled = false;
+        _sprRight.enabled = false;
+        booster1.SetActive(false);
+        booster2.SetActive(false);
+        boostMaker.Stop();
+        heatBar.enabled = false;
         GameManager.instance.GameOver();
     }
 }

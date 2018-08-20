@@ -19,5 +19,13 @@ public class MusicScript : MonoBehaviour {
         {
             musicPlayer.Stop();
         }
+        if(GameManager.instance.paused == true)
+        {
+            musicPlayer.Pause();
+        }
+        if(GameManager.instance.paused == false)
+        {
+            musicPlayer.UnPause();
+        }
     }
 }

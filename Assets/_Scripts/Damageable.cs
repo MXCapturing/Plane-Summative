@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Damageable : MonoBehaviour {
 
-    public int maxHP;
-    public int currentHP;
+    public float maxHP;
+    public float currentHP;
     private int dropChance;
     private int powerUp;
 
@@ -15,13 +15,18 @@ public class Damageable : MonoBehaviour {
     public GameObject hpUp;
 
     public SpriteRenderer _spr;
+    public Image hpBar;
 
     // Use this for initialization
     void Start ()
     {
         currentHP = maxHP;
 	}
-	
+
+    private void Update()
+    {
+        hpBar.fillAmount = currentHP / maxHP;
+    }
     public void doDamage(int damage)
     {
         _spr.color = Color.red;
@@ -32,7 +37,7 @@ public class Damageable : MonoBehaviour {
             GameManager.instance.score += 50;
             PlayerMovement.instance.health += 5;
 
-            powerUp = Random.Range(0, 3);
+            powerUp = Random.Range(0, 2);
             dropChance = Random.Range(0, 20);
             if(dropChance >= 15 && powerUp == 0)
             {

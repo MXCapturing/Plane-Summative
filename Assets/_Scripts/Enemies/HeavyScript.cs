@@ -14,9 +14,6 @@ public class HeavyScript : MonoBehaviour {
     public AudioSource soundMaker;
     public AudioClip sound;
 
-    public int hp;
-    public Image hpBar;
-
     [SerializeField]
     private GameObject _destination;
 
@@ -27,7 +24,18 @@ public class HeavyScript : MonoBehaviour {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 5f);
-        _destination = GameObject.Find("Bait");
+        if (PlayerPrefs.GetInt("Player") == 1)
+        {
+            _destination = GameObject.Find("Player(Clone)");
+        }
+        if (PlayerPrefs.GetInt("Player") == 2)
+        {
+            _destination = GameObject.Find("Player2(Clone)");
+        }
+        if (PlayerPrefs.GetInt("Player") == 3)
+        {
+            _destination = GameObject.Find("Player3(Clone)");
+        }
 
         soundMaker.clip = sound;
         _Navmesh.speed += GameManager.instance.speedPoints;
@@ -45,8 +53,6 @@ public class HeavyScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         SetDestination();
-        hp = GetComponent<Damageable>().currentHP;
-        hpBar.fillAmount = 0.02f * hp;
 
         if (GameManager.instance.paused == true || GameManager.instance.alive == false)
         {
@@ -55,22 +61,6 @@ public class HeavyScript : MonoBehaviour {
         if (GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             _Navmesh.isStopped = false;
-        }
-
-        if (transform.position.x < 450 && transform.position.x > -450 && transform.position.z < 450 && transform.position.z > -450)
-        {
-            if (PlayerPrefs.GetInt("Player") == 1)
-            {
-                _destination = GameObject.Find("Player(Clone)");
-            }
-            if (PlayerPrefs.GetInt("Player") == 2)
-            {
-                _destination = GameObject.Find("Player2(Clone)");
-            }
-            if (PlayerPrefs.GetInt("Player") == 3)
-            {
-                _destination = GameObject.Find("Player3(Clone)");
-            }
         }
     }
 

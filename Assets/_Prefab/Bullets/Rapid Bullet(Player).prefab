@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 1986144978761268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 129, y: 5, z: 196}
-  m_LocalScale: {x: 2, y: 2, z: 10}
+  m_LocalScale: {x: 5, y: 10, z: 20}
   m_Children:
   - {fileID: 4895247894088892}
   m_Father: {fileID: 0}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTimer: 2
-  damage: 5
+  damage: 7
   impact: {fileID: 1901549699185396, guid: 51f407e69735f184391b64ed6d5858ed, type: 2}
   impactSound: {fileID: 8300000, guid: 110faf308e16a544cace7e632f230611, type: 3}
   soundSource: {fileID: 82135509240582362}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025cd333c8e166447a2c0351dffdd08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
 --- !u!136 &136552326738041348
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -11,9 +11,6 @@ public class EnemyScript : MonoBehaviour {
     public GameObject bullet;
     private Quaternion qrotation;
 
-    public int hp;
-    public Image hpBar;
-
     public AudioSource soundMaker;
     public AudioClip sound;
 
@@ -27,7 +24,18 @@ public class EnemyScript : MonoBehaviour {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
         InvokeRepeating("Shooting", 2f, 2f);
-        _destination = GameObject.Find("Bait");
+        if (PlayerPrefs.GetInt("Player") == 1)
+        {
+            _destination = GameObject.Find("Player(Clone)");
+        }
+        if (PlayerPrefs.GetInt("Player") == 2)
+        {
+            _destination = GameObject.Find("Player2(Clone)");
+        }
+        if (PlayerPrefs.GetInt("Player") == 3)
+        {
+            _destination = GameObject.Find("Player3(Clone)");
+        }
 
         soundMaker.clip = sound;
         _Navmesh.speed += GameManager.instance.speedPoints;
@@ -46,8 +54,6 @@ public class EnemyScript : MonoBehaviour {
 	void Update ()
     {
         SetDestination();
-        hp = GetComponent<Damageable>().currentHP;
-        hpBar.fillAmount = 0.067f * hp;
 
         if(GameManager.instance.paused == true || GameManager.instance.alive == false)
         {
@@ -56,22 +62,7 @@ public class EnemyScript : MonoBehaviour {
         if(GameManager.instance.paused == false && GameManager.instance.alive == true)
         {
             _Navmesh.isStopped = false;
-        }
-        if(transform.position.x < 450 && transform.position.x > -450 && transform.position.z < 450 && transform.position.z > -450)
-        {
-            if (PlayerPrefs.GetInt("Player") == 1)
-            {
-                _destination = GameObject.Find("Player(Clone)");
-            }
-            if (PlayerPrefs.GetInt("Player") == 2)
-            {
-                _destination = GameObject.Find("Player2(Clone)");
-            }
-            if (PlayerPrefs.GetInt("Player") == 3)
-            {
-                _destination = GameObject.Find("Player3(Clone)");
-            }
-        }     
+        }  
     }
 
     private void Shooting()

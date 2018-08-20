@@ -26,6 +26,8 @@ public class BasicRocketEnemy : MonoBehaviour {
         {
             soundMaker.Play();
             PlayerMovement.instance._spr.color = Color.red;
+            PlayerMovement.instance._sprLeft.color = Color.red;
+            PlayerMovement.instance._sprRight.color = Color.red;
             Instantiate(impact, this.transform.position, this.transform.rotation);
             PlayerMovement.instance.health -= damage;
             Invoke("BulletDrop", 1);

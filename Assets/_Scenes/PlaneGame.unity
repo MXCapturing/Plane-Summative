@@ -1460,18 +1460,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0702f88cb1c31804d952779187051dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1456654298197844, guid: d068f27a077efaf48b1df4a6cd389a92, type: 2}
-  player2: {fileID: 1940810674197412, guid: f67848b51442a2547b37a581fc6f2e36, type: 2}
-  player3: {fileID: 1282578365056336, guid: 625edf8d9fd078841bad06aed90a696a, type: 2}
+  player1: {fileID: 1491087470885172, guid: d068f27a077efaf48b1df4a6cd389a92, type: 2}
+  player2: {fileID: 1711152417385810, guid: f67848b51442a2547b37a581fc6f2e36, type: 2}
+  player3: {fileID: 1513016226813278, guid: 625edf8d9fd078841bad06aed90a696a, type: 2}
   paused: 0
   pauseMenu: {fileID: 327214890}
   playerHP: {fileID: 1554162115}
-  lightE: {fileID: 1118713279074254, guid: 231476fe4eb775f49ba5a086d1b36abe, type: 2}
-  lightE2: {fileID: 1424017548891192, guid: 08a0a6b9410318f4d980835c70082cbb, type: 2}
-  mediumE: {fileID: 1385897629063678, guid: 7d661a003e061ab409479a4aa0e55262, type: 2}
-  mediumE2: {fileID: 1219198971767772, guid: e9ca4b2282cc7c940994149cc8d29d02, type: 2}
-  heavyE: {fileID: 1241045022636366, guid: 5e533215f9892c541858388791898caf, type: 2}
-  heavyE2: {fileID: 1789603684469410, guid: 2d38f37388e55e64f8ba8c10b99066d7, type: 2}
+  lightE: {fileID: 1681519491147682, guid: 231476fe4eb775f49ba5a086d1b36abe, type: 2}
+  lightE2: {fileID: 1749173975369756, guid: 08a0a6b9410318f4d980835c70082cbb, type: 2}
+  mediumE: {fileID: 1029959306370504, guid: 7d661a003e061ab409479a4aa0e55262, type: 2}
+  mediumE2: {fileID: 1944040766160786, guid: e9ca4b2282cc7c940994149cc8d29d02, type: 2}
+  heavyE: {fileID: 1659157782940160, guid: 5e533215f9892c541858388791898caf, type: 2}
+  heavyE2: {fileID: 1560441594345412, guid: 2d38f37388e55e64f8ba8c10b99066d7, type: 2}
   timerText: {fileID: 1968798304}
   outOfBounds: {fileID: 585800047}
   timerF: 0
@@ -2773,91 +2773,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!1 &1588741566
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1588741570}
-  - component: {fileID: 1588741569}
-  - component: {fileID: 1588741568}
-  - component: {fileID: 1588741567}
-  m_Layer: 0
-  m_Name: Bait
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1588741567
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1588741566}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1588741568
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1588741566}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1588741569
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1588741566}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1588741570
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1588741566}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 100, z: -19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1888708253
 GameObject:
   m_ObjectHideFlags: 0

@@ -1064,7 +1064,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dcb3674fe071241b2653fe9eed5762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 4
+  defaultSpeed: 4
   pCam: {fileID: 20973620551569774}
   booster1: {fileID: 1865073144494034}
   booster2: {fileID: 1137947180637848}
@@ -1076,6 +1077,7 @@ MonoBehaviour:
   timeLeft: 0
   dmgTimer: 0
   health: 0
+  maxHealth: 30
   damage: 0
   canShoot: 0
   fireRate: 0
