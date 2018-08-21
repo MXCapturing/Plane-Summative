@@ -237,6 +237,7 @@ MonoBehaviour:
   powerUp: {fileID: 8300000, guid: 26c791dec780e09438535fde73b547d7, type: 3}
   powerSource: {fileID: 82857268412402914}
   _spr: {fileID: 212175025015803536}
+  _col: {fileID: 65519784683717432}
 --- !u!212 &212175025015803536
 SpriteRenderer:
   m_ObjectHideFlags: 1

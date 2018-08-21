@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour {
             Invoke("ResetColor", 0.5f);
         }
 
-        if(transform.position.x < 800 && transform.position.x > -800 && transform.position.z < 800 && transform.position.z > -800)
+        if(transform.position.x < 1000 && transform.position.x > -1000 && transform.position.z < 1000 && transform.position.z > -1000)
         {
             timeLeft = 5;
             oobTimerf = 0;
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour {
             health -= 0.01f;
 
             transform.position += pCam.transform.up * speed;
-            if(transform.position.z > 800)
+            if(transform.position.z > 1000)
             {
                 GameManager.instance.outOfBounds.SetActive(true);
                 oobTimerf = oobTimerf + Time.deltaTime;
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour {
                 timeLeft = 5 - oobTimerInt;
                 GameManager.instance.timerText.text = "" + timeLeft;
             }
-            if (transform.position.z < -800)
+            if (transform.position.z < -1000)
             {
                 GameManager.instance.outOfBounds.SetActive(true);
                 oobTimerf = oobTimerf + Time.deltaTime;
@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour {
                 timeLeft = 5 - oobTimerInt;
                 GameManager.instance.timerText.text = "" + timeLeft;
             }
-            if (transform.position.x > 800)
+            if (transform.position.x > 1000)
             {
                 GameManager.instance.outOfBounds.SetActive(true);
                 oobTimerf = oobTimerf + Time.deltaTime;
@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour {
             {
                 Invoke("GameOver", 0f);
             }
-            if (transform.position.x < -800)
+            if (transform.position.x < -1000)
             {
                 GameManager.instance.outOfBounds.SetActive(true);
                 oobTimerf = oobTimerf + Time.deltaTime;
@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     speed = defaultSpeed - 1.5f;
                 }
-                heatBar.fillAmount += 0.003f;
+                heatBar.fillAmount += 0.005f;
                 if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
                 {
                     this.transform.eulerAngles += new Vector3(0, -0.05f, 0);
