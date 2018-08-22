@@ -8,6 +8,7 @@ public class BulletUpgrade : MonoBehaviour {
     public AudioSource powerSource;
 
     public SpriteRenderer _spr;
+    public SpriteRenderer _spr1;
     public Collider _col;
 
     private void Start()
@@ -24,6 +25,7 @@ public class BulletUpgrade : MonoBehaviour {
             PlayerMovement.instance.damage++;
             PlayerMovement.instance.dmgTimer = 0;
             _spr.enabled = false;
+            _spr1.enabled = false;
             _col.enabled = false;
             Invoke("Destroy", 1f);
         }
