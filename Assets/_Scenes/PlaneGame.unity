@@ -1472,6 +1472,8 @@ MonoBehaviour:
   mediumE2: {fileID: 1944040766160786, guid: e9ca4b2282cc7c940994149cc8d29d02, type: 2}
   heavyE: {fileID: 1659157782940160, guid: 5e533215f9892c541858388791898caf, type: 2}
   heavyE2: {fileID: 1560441594345412, guid: 2d38f37388e55e64f8ba8c10b99066d7, type: 2}
+  enemyNo: 0
+  enemyMax: 25
   timerText: {fileID: 1968798304}
   outOfBounds: {fileID: 585800047}
   timerF: 0

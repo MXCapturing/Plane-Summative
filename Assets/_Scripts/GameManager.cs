@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour {
     public GameObject lightE; public GameObject lightE2; 
     public GameObject mediumE; public GameObject mediumE2;
     public GameObject heavyE; public GameObject heavyE2;
+    public int enemyNo;
+    public int enemyMax;
 
     private float xCoord;
     private float zCoord;
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour {
         spawn4 = false;
         spawn5 = false;
         score = 0;
+        enemyNo = 0;
 
         paused = false;
     }
@@ -184,25 +187,29 @@ public class GameManager : MonoBehaviour {
             {
                 yield return new WaitForSeconds(1f);
                 zone = UnityEngine.Random.Range(1, 4);
-                if (zone == 1)
+                if (zone == 1 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 2)
+                if (zone == 2 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 3)
+                if (zone == 3 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 4)
+                if (zone == 4 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
                 yield return new WaitForSeconds(1f);
             }
@@ -210,41 +217,53 @@ public class GameManager : MonoBehaviour {
             {
                 yield return new WaitForSeconds(2f);
                 zone = UnityEngine.Random.Range(1, 4);
-                if (zone == 1)
+                if (zone == 1 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 2)
+                if (zone == 2 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 3)
+                if (zone == 3 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 4)
+                if (zone == 4 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
                 yield return new WaitForSeconds(2f);
             }
@@ -252,53 +271,71 @@ public class GameManager : MonoBehaviour {
             {
                 yield return new WaitForSeconds(3f);
                 zone = UnityEngine.Random.Range(1, 4);
-                if (zone == 1)
+                if (zone == 1 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 2)
+                if (zone == 2 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 3)
+                if (zone == 3 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 4)
+                if (zone == 4 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
                 yield return new WaitForSeconds(3f);
             }
@@ -306,153 +343,210 @@ public class GameManager : MonoBehaviour {
             {
                 yield return new WaitForSeconds(5f);
                 zone = UnityEngine.Random.Range(1, 4);
-                if (zone == 1)
+                if (zone == 1 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 2)
+                if (zone == 2 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    enemyNo++;
+                    zCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
-                    zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
-                    zCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 3)
+                if (zone == 3 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 4)
+                if (zone == 4 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
             }
             while (spawn5 == true)
             {
                 yield return new WaitForSeconds(4f);
                 zone = UnityEngine.Random.Range(1, 4);
-                if (zone == 1)
+                if (zone == 1 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
-                    xCoord = UnityEngine.Random.Range(-500, 500);
-                    xCoord = UnityEngine.Random.Range(-500, 500);
-                    Instantiate(mediumE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(mediumE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
+                    xCoord = UnityEngine.Random.Range(-500, 500);
+                    Instantiate(mediumE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, 1050), Quaternion.identity);
-                    Instantiate(mediumE2, new Vector3(xCoord, 100, 1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 2)
+                if (zone == 2 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 3)
+                if (zone == 3 && enemyNo <= enemyMax)
                 {
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                     xCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(xCoord, 100, -1050), Quaternion.identity);
+                    enemyNo++;
                 }
-                if (zone == 4)
+                if (zone == 4 && enemyNo <= enemyMax)
                 {
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(heavyE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(mediumE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                     zCoord = UnityEngine.Random.Range(-500, 500);
                     Instantiate(lightE2, new Vector3(-1050, 100, zCoord), Quaternion.identity);
+                    enemyNo++;
                 }
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(4f);
             }
         }
     }

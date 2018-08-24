@@ -23,7 +23,7 @@ public class HeavyScript : MonoBehaviour {
     void Start () {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
-        InvokeRepeating("Shooting", 2f, 5f);
+        InvokeRepeating("Shooting", 5f, 10f);
         if (PlayerPrefs.GetInt("Player") == 1)
         {
             _destination = GameObject.Find("Player(Clone)");

@@ -48,6 +48,7 @@ public class Damageable : MonoBehaviour {
                 Instantiate(hpUp, this.transform.position, Quaternion.identity);
             }
             Instantiate(explosion, this.transform.position, Quaternion.identity);
+            GameManager.instance.enemyNo--;
             Destroy(gameObject);
         }
     }

@@ -23,7 +23,7 @@ public class EnemyScript : MonoBehaviour {
     void Start () {
         _Navmesh = this.GetComponent<NavMeshAgent>();
         SetDestination();
-        InvokeRepeating("Shooting", 2f, 2f);
+        InvokeRepeating("Shooting", 5f, 5f);
         if (PlayerPrefs.GetInt("Player") == 1)
         {
             _destination = GameObject.Find("Player(Clone)");
